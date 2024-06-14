@@ -9,13 +9,31 @@
               style="border-radius: 50%;"
               width="150"
               height="150"
-              src="https://picsum.photos/200/300"
+              src="https://cdn3d.iconscout.com/3d/premium/thumb/man-avatar-8183369-6546914.png?f=webp"
           ></img>
           <div class="d-flex flex-column justify-center ">
             <h4 class="mt-16 px-2 font-weight-bold">Welcome back , Leo Pavlovski 😇</h4>
             <h4 class="ml-2">ID : 129379</h4>
           </div>
         </div>
+      </v-col>
+      <v-col cols="9">
+<!--        Notifications-->
+        <v-card height="150" v-if="openNotifications">
+          <v-data-table :items="notifications" height="150" hide-default-footer class="mt-16">
+            <template v-slot:item="{ item, index }">
+              <tr>
+                <td>
+                  {{item.notName}}
+                </td>
+                <td>
+                  <v-btn color="primary" class="float-right" height="25">{{index === 0 ? 'Apply ' : 'Visit' }}</v-btn>
+                </td>
+              </tr>
+            </template>
+          </v-data-table>
+        </v-card>
+
       </v-col>
     </v-row>
     <!-- Display Information about the student -->
@@ -53,6 +71,20 @@
               </tr>
             </template>
           </v-data-table>
+          <v-divider></v-divider>
+          <v-card-title class="mt-2">Your Colleagues</v-card-title>
+          <v-data-table :items="students" height="100">
+            <template v-slot:item="{ item, index }">
+              <tr>
+                <td>
+                  {{item.name}}
+                </td>
+                <td>
+                 <v-btn color="primary" class="float-right">Visit Colleague</v-btn>
+                </td>
+              </tr>
+            </template>
+          </v-data-table>
         </v-card>
       </v-col>
       <v-col cols="2">
@@ -60,7 +92,7 @@
           <v-card-title class="headline font-weight-bold">
            <span class="pa-2 ml-5 d-flex">Top Performing Classes 🏆</span>
             <v-card width="500">
-              <v-data-table :items="CST_courses" hide-default-footer height="650">
+              <v-data-table :items="CST_courses" hide-default-footer height="880">
                 <template v-slot:item="{ item, index }">
                   <tr>
                     <td>
@@ -85,7 +117,7 @@
           <v-card-title class="headline font-weight-bold">
             <span class=" pa-2 ml-7 d-flex">Available Internships 👨‍💻</span>
             <v-card width="500">
-              <v-data-table :items="internships" hide-default-footer height="750" style="max-height: 670px">
+              <v-data-table :items="internships" hide-default-footer height="900" style="max-height: 950px">
                 <template v-slot:item="{ item, index }">
                   <tr>
                     <td>
@@ -114,6 +146,7 @@
 export default {
   data() {
     return {
+      openNotifications: true,
       CST_courses: [
         { name: "Introduction to Computer Science", description: "An introduction to the fundamental concepts of computer science." },
         { name: "Data Structures and Algorithms", description: "Study of data organization, management, and algorithms." },
@@ -135,7 +168,22 @@ export default {
         { name: "Amazon" },
         { name: "Facebook" },
         { name: "Apple" }
+      ],
+      students : [
+        { name: "Goran Jakovleski" },
+        { name: "Nikola Domazetovikj" },
+        { name: "Nikola Jovanoski" },
+        { name: "Daniel Mitevski" },
+        { name: "Denis Mustafi" }
+      ],
+      notifications : [
+        { notName: "You Have Been invited to Apple" },
+        { notName: "Daniel Mitevski Just visited your profile" },
+        { notName: "Someone from other faculty has visited your profile" },
+        { notName: "Daniel Mitevski" },
+        { notName: "Denis Mustafi" }
       ]
+
     };
   },
   computed: {
@@ -153,6 +201,17 @@ export default {
         { text: "Grade", value: "grade" }
       ];
     }
+  },
+  methods:{
+    toggleNotifications() {
+      this.openNotifications = !this.openNotifications;
+    }
+  },
+  created() {
+    this.$root.$on('toggle-notifications', this.toggleNotifications);
+  },
+  destroyed() {
+    this.$root.$off('toggle-notifications', this.toggleNotifications);
   },
 };
 </script>

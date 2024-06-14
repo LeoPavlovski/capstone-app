@@ -14,9 +14,9 @@
 
         <v-spacer></v-spacer>
 
-        <v-btn icon>
-          <v-icon>mdi-heart</v-icon>
-        </v-btn>
+            <v-btn @click="toggleNotifications" icon>
+              <v-icon>mdi-heart</v-icon>
+            </v-btn>
 
         <v-btn icon>
           <v-icon>mdi-magnify</v-icon>
@@ -60,5 +60,10 @@ export default {
       drawer: false,
       group: null,
   }),
+  methods:{
+    toggleNotifications() {
+      this.$root.$emit('toggle-notifications');
+    }
+  }
 };
 </script>
