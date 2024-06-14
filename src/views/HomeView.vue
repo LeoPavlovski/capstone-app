@@ -1,15 +1,15 @@
 <template>
-  <dashboard-component />
+  <profile />
 </template>
 
 <script>
-  import DashboardComponent from '../components/Dashboard.vue'
+  import Profile from '../components/Profile.vue'
 
   export default {
-    name: 'Dashboard',
+    name: 'Profile',
 
     components: {
-      DashboardComponent,
+      Profile,
     },
   }
 </script>

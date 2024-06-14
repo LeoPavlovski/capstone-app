@@ -10,7 +10,7 @@
               width="150"
               height="150"
               src="https://cdn3d.iconscout.com/3d/premium/thumb/man-avatar-8183369-6546914.png?f=webp"
-          ></img>
+          >
           <div class="d-flex flex-column justify-center ">
             <h4 class="mt-16 px-2 font-weight-bold">Welcome back , Leo Pavlovski 😇</h4>
             <h4 class="ml-2">ID : 129379</h4>

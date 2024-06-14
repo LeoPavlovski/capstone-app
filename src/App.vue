@@ -3,6 +3,7 @@
     <v-main>
       <router-view/>
       <v-app-bar
+           v-if="$route.path !=='/login'"
           color="primary accent-4"
           dense
           dark
@@ -10,7 +11,7 @@
       >
         <v-app-bar-nav-icon></v-app-bar-nav-icon>
 
-        <v-toolbar-title>Capstone 1.0</v-toolbar-title>
+        <v-toolbar-title>Internship Finder</v-toolbar-title>
 
         <v-spacer></v-spacer>
 
