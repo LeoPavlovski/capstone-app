@@ -13,7 +13,9 @@
                         style="font-size:25px;"
                     >Login to Your Account</h4>
                     <h6
-                        class="text-center  grey--text "
+                        class="text-center  mt-2"
+                        style="font-size:17px;"
+
                     >Log in to your account so you can continue builiding <br>and editing your onboarding flows</h6>
                     <v-row align="center" justify="center">
                       <v-col cols="12" sm="8">
@@ -53,9 +55,10 @@
                 <v-col cols="12" md="6" class="blue rounded-bl-xl" >
                   <div style="  text-align: center; padding: 180px 0;">
                     <v-card-text class="white--text" >
-                      <h3 class="text-center ">Don't Have an Account Yet?</h3>
+                      <h3 class="text-center" style="font-size:20px;">Don't Have an Account Yet?</h3>
                       <h6
-                          class="text-center"
+                          class="text-center mt-2"
+                          style="font-size:16px;"
                       >Let's get you all set up so you can start creating your your first<br>  onboarding experience</h6>
                     </v-card-text>
                     <div class="text-center">
@@ -70,9 +73,10 @@
                 <v-col cols="12" md="6" class="blue rounded-br-xl">
                   <div style="  text-align: center; padding: 180px 0;">
                     <v-card-text class="white--text" >
-                      <h3 class="text-center ">Alredy Signed up?</h3>
+                      <h3 class="text-center " style="font-size:16px;">Already Signed up?</h3>
                       <h6
                           class="text-center"
+                          style="font-size:16px;"
                       >Log in to your account so you can continue building and<br>  editing your onboarding flows</h6>
                     </v-card-text>
                     <div class="text-center">
@@ -85,9 +89,10 @@
                   <v-card-text class="mt-12">
                     <h4
                         class="text-center"
+                        style="font-size:16px;"
                     >Sign Up for an Account</h4>
                     <h6
-                        class="text-center  grey--text "
+                        class="text-center mt-3 mb-16  grey--text " style="font-size:16px;"
                     >Let's get you all set up so you can start creatin your <br>
                       first onboarding experiance</h6>
                     <v-row align="center" justify="center">
@@ -143,4 +148,4 @@ export default {
 .v-application .rounded-br-xl {
   border-bottom-right-radius: 300px !important;
 }
-</style>
+</>
