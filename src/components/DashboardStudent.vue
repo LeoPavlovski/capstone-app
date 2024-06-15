@@ -87,7 +87,21 @@
             </v-card>
           </v-col>
           <v-col cols="3">
-          <v-card-title>Join A Club</v-card-title>
+          <v-card-title>Join A Club ⭐</v-card-title>
+            <v-data-table
+                :items="programmingClubs"
+                item-key="name"
+                class="elevation-1"
+                height="561"
+            >
+              <template v-slot:item="{item}">
+                <tr>
+                  <td>{{ item.name }}</td>
+                  <td>{{ item.description }}</td>
+                  <td><v-chip  color="primary" text :href="item.website" target="_blank">Visit Website</v-chip></td>
+                </tr>
+              </template>
+            </v-data-table>
           </v-col>
         </v-row>
       </v-card>
@@ -222,8 +236,60 @@ export default{
             "Active participation in coding competitions, hackathons, or programming communities."
           ]
         }
+      ],
+       programmingClubs : [
+        {
+          name: "JavaScript Community",
+          description: "A community for JavaScript enthusiasts to discuss frameworks, libraries, and best practices.",
+          website: "https://www.javascript.com/"
+        },
+        {
+          name: "ReactJS Club",
+          description: "A club dedicated to ReactJS developers, offering resources, workshops, and community projects.",
+          website: "https://reactjs.org/community/support.html"
+        },
+        {
+          name: "Angular Developers Group",
+          description: "A group for developers working with Angular, sharing tutorials, tips, and organizing meetups.",
+          website: "https://angular.io/community"
+        },
+        {
+          name: "Vue.js Developers",
+          description: "A community for Vue.js developers to share knowledge, discuss Vue.js ecosystem, and collaborate on projects.",
+          website: "https://vuejs.org/v2/guide/community.html"
+        },
+        {
+          name: "Python Programming Club",
+          description: "A club focused on Python programming, offering tutorials, challenges, and projects.",
+          website: "https://www.python.org/community/"
+        },
+        {
+          name: "Ruby on Rails Meetup",
+          description: "A meetup group for Ruby on Rails developers, organizing events, workshops, and hackathons.",
+          website: "https://www.meetup.com/topics/ruby-on-rails/"
+        },
+        {
+          name: "PHP Developers Community",
+          description: "A community for PHP developers to share expertise, discuss PHP frameworks, and collaborate on PHP projects.",
+          website: "https://www.php.net/community.php"
+        },
+        {
+          name: "Full Stack Developers Forum",
+          description: "A forum for full stack developers to discuss technologies across frontend, backend, and databases.",
+          website: "https://fullstackacademy.com/blog/full-stack-developer-forum-resources"
+        },
+        {
+          name: "DevOps Exchange",
+          description: "A community for DevOps professionals to share knowledge, tools, and practices in continuous integration and delivery.",
+          website: "https://devops-exchange.org/"
+        },
+        {
+          name: "Data Science Society",
+          description: "A society for data scientists and analysts, organizing workshops, talks, and data-driven projects.",
+          website: "https://www.datasciencesociety.net/"
+        }
       ]
-     }
+    }
   },
   methods:{
     visitRequirement(){
