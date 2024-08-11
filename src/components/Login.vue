@@ -19,9 +19,9 @@
                     >Log in to your account so you can continue builiding <br>and editing your onboarding flows</h6>
                     <v-row align="center" justify="center">
                       <v-col cols="12" sm="8">
-
                         <v-text-field
                             label="Email"
+                            v-model="email"
                             outlined
                             dense
                             color="blue"
@@ -32,22 +32,24 @@
                             label="Password"
                             outlined
                             dense
+                            v-model="password"
                             color="blue"
                             autocomplete="false"
                             type="password"
 
                         />
+
                         <v-row>
                           <v-col cols="12" sm="7">
                             <v-checkbox
-
-                                label="Remember Me"
+                                v-model="staff"
+                                label="Check For Staff Account."
                                 class="mt-n1"
                                 color="blue"
                             > </v-checkbox>
                           </v-col>
                         </v-row>
-                        <v-btn color="blue" dark block tile>Log in</v-btn>
+                        <v-btn @click="performLogin" color="blue" dark block tile>Log in</v-btn>
                       </v-col>
                     </v-row>
                   </v-card-text>
@@ -80,7 +82,7 @@
                       >Log in to your account so you can continue building and<br>  editing your onboarding flows</h6>
                     </v-card-text>
                     <div class="text-center">
-                      <v-btn tile outlined dark @click="step--">Log in</v-btn>
+                      <v-btn  tile outlined dark @click="step--">Log in</v-btn>
                     </div>
                   </div>
                 </v-col>
@@ -98,11 +100,20 @@
                     <v-row align="center" justify="center">
                       <v-col cols="12" sm="8">
                         <v-text-field
+                            label="Username"
+                            v-model="username"
+                            outlined
+                            dense
+                            color="blue"
+                            autocomplete="false"
+                        />
+                        <v-text-field
                             label="Email"
                             outlined
                             dense
                             color="blue"
                             autocomplete="false"
+                            v-model="email"
                         />
                         <v-text-field
                             label="Password"
@@ -111,9 +122,18 @@
                             color="blue"
                             autocomplete="false"
                             type="password"
+                            v-model="password"
 
                         />
-                        <v-btn color="blue" dark block tile>Sign up</v-btn>
+                          <v-col cols="12" sm="7">
+                            <v-checkbox
+                                v-model="staff"
+                                label="Check For Staff Account."
+                                class="mt-n1"
+                                color="blue"
+                            > </v-checkbox>
+                          </v-col>
+                        <v-btn @click="performRegister" color="blue" dark block tile>Sign up</v-btn>
                       </v-col>
                     </v-row>
                   </v-card-text>
@@ -132,8 +152,44 @@
 
 export default {
   data: () => ({
-    step: 1
+    staff:false,
+    step: 1,
+    email:'',
+    password:'',
+    username:'',
   }),
+  methods:{
+    performLogin(){
+      if(this.staff === true){
+        this.staff =1;
+      }
+      else{
+        this.staff=0;
+      }
+      const body ={
+        email:this.email,
+        password:this.password,
+        status:this.staff
+      };
+      this.$store.dispatch('login',body).then(res=>{
+        console.log('res : ' , res);
+        this.$router.push('/dashboard');
+      });
+    },
+    performRegister(){
+
+      const body ={
+        email:this.email,
+        password:this.password,
+        status:this.staff,
+        name:this.username
+      }
+
+      this.$store.dispatch('register',body).then(res=>{
+        console.log(res);
+      })
+    }
+  },
   props: {
     source: String
   }
@@ -148,4 +204,4 @@ export default {
 .v-application .rounded-br-xl {
   border-bottom-right-radius: 300px !important;
 }
-</>
+</style>

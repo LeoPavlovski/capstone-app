@@ -114,6 +114,7 @@
 </style>
 
 <script>
+import {mapState} from "vuex";
 export default{
   data(){
     return{
@@ -290,6 +291,14 @@ export default{
         }
       ]
     }
+  },
+  computed:{
+    ...mapState({
+      points: state => state.points
+    })
+  },
+  mounted(){
+    console.log('Points : ' ,this.points);
   },
   methods:{
     visitRequirement(){

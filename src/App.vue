@@ -35,6 +35,7 @@
             >
               <v-icon>mdi-dots-vertical</v-icon>
             </v-btn>
+            <v-btn @click="performLogout">Logout</v-btn>
           </template>
 
           <v-list>
@@ -64,7 +65,10 @@ export default {
   methods:{
     toggleNotifications() {
       this.$root.$emit('toggle-notifications');
-    }
+    },
+    performLogout(){
+      this.$store.dispatch('logout');
+    },
   }
 };
 </script>
