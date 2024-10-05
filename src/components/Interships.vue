@@ -17,10 +17,10 @@
     </v-dialog>
     <Navigation class="w-100 w-md-25"></Navigation>
     <v-row class="text-center pa-5">
-      <v-col cols="12" md="3">
+      <v-col cols="12" md="4">
         <v-card color="primary" elevation="3">
           <v-card-title class="white--text">Create Internship</v-card-title>
-          <v-card elevation="2" class="pa-5 internship-form">
+          <v-card elevation="2" class="pa-5 internship-form overflow-auto" height="300">
             <v-text-field v-model="intershipForm.name" dense outlined label="Internship Name"></v-text-field>
             <v-textarea no-resize v-model="intershipForm.description" dense outlined label="Internship Description"></v-textarea>
             <v-text-field dense outlined label="Start Date" type="date" v-model="intershipForm.start_date"></v-text-field>
@@ -36,7 +36,7 @@
       </v-col>
 
       <!-- Active Internships Section -->
-      <v-col cols="12" md="9">
+      <v-col cols="12" md="8">
         <v-card color="primary" class="elevation-3 white--text">
           <v-card-title>Active Internships By Professors</v-card-title>
           <v-data-table
@@ -44,7 +44,7 @@
               :headers="internshipHeaders"
               item-key="id"
               class="elevation-2"
-              height="735"
+              height="240"
               :loading="loading"
               loading-text="loading..."
           >
@@ -88,7 +88,7 @@
       <v-col cols="12" class="text-left">
       <v-card color="primary" class="elevation-3">
         <v-card-title class="white--text">My Active Internships</v-card-title>
-        <v-data-table :loading="loading" :headers="myHeaders" :items="getUserInternships" height="290">
+        <v-data-table :loading="loading" :headers="myHeaders" :items="getUserInternships" height="160">
           <template v-slot:item="{item}">
             <tr>
               <td>{{item.name}}</td>
@@ -181,10 +181,10 @@ export default {
       ],
       internshipHeaders: [
         { text: "Created", value: "created" },
-        { text: "Internship Name", value: "name" },
+        { text: "Internship", value: "name" },
         { text: "Company", value: "company" },
-        { text: "Start Date", value: "start_date" },
-        { text: "End Date", value: "end_date" },
+        { text: "Start", value: "start_date" },
+        { text: "End", value: "end_date" },
         { text: "Location", value: "location" },
         { text: "Duration", value: "duration" },
         { text: "Scholarship", value: "stipend" },
@@ -192,10 +192,10 @@ export default {
         { text: "Actions", value: "actions" }
       ],
       myHeaders: [
-        { text: "Internship Name", value: "name" },
+        { text: "Internship ", value: "name" },
         { text: "Company", value: "company" },
-        { text: "Start Date", value: "start_date" },
-        { text: "End Date", value: "end_date" },
+        { text: "Start", value: "start_date" },
+        { text: "End", value: "end_date" },
         { text: "Location", value: "location" },
         { text: "Duration", value: "duration" },
         { text: "Scholarship", value: "stipend" },
