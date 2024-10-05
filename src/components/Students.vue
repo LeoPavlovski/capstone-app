@@ -355,9 +355,6 @@ export default {
     getCourses() {
       this.$store.dispatch('getCourses')
     },
-    sendInvite() {
-
-    },
     getUsers() {
       this.$store.dispatch('getUsers');
     },
