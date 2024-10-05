@@ -3,9 +3,9 @@
     <Navigation class="w-100 w-md-25"></Navigation>
     <v-row class="text-center pa-5">
       <v-col cols="12" md="6">
-        <v-card color="primary" elevation="3">
+        <v-card class="px-0" color="primary">
           <v-card-title class="white--text">Latest News</v-card-title>
-          <v-card elevation="2" class="pa-5 overflow-auto" height="565" min-height="565">
+          <v-card style="border-radius:0px !important;" class="pa-5 overflow-auto" elevation="1" height="280" min-height="280">
             <v-expansion-panels>
               <v-expansion-panel v-for="item in news" :key="item.id">
                 <v-expansion-panel-header>
@@ -29,87 +29,89 @@
 
       <!-- Active Internships Section -->
       <v-col cols="6">
-        <v-card height="630" min-height="600">
+        <v-card height="343" min-height="343" elevation="8">
           <v-card-title class="primary white--text"  color="primary">Companies</v-card-title>
-          <v-card-text>
-            <v-expansion-panels>
-              <v-expansion-panel
-                  v-for="company in companies"
-                  :key="company.id"
-                  class="mb-2"
-              >
-                <v-expansion-panel-header>
-                  <v-chip color="">
-                    <v-icon color="blue" class="mr-2">mdi-office-building</v-icon>
-                   <span class="text-capitalize"> {{ company.name }}</span>
-                  </v-chip>
+          <v-card elevation="0">
+            <v-card-text>
+              <v-expansion-panels>
+                <v-expansion-panel
+                    v-for="company in companies"
+                    :key="company.id"
+                    class="mb-2"
+                >
+                  <v-expansion-panel-header>
+                    <v-chip color="">
+                      <v-icon color="blue" class="mr-2">mdi-office-building</v-icon>
+                      <span class="text-capitalize"> {{ company.name }}</span>
+                    </v-chip>
 
-                </v-expansion-panel-header>
-                <v-expansion-panel-content>
-                  <v-list style="max-height:300px; overflow:auto;">
-                    <v-list-item>
-                      <v-list-item-icon>
-                        <v-icon color="green">mdi-account-multiple</v-icon>
-                      </v-list-item-icon>
-                      <v-list-item-content>{{ company.companySize }}</v-list-item-content>
-                    </v-list-item>
-                    <v-list-item>
-                      <v-list-item-icon>
-                        <v-icon color="purple">mdi-web</v-icon>
-                      </v-list-item-icon>
-                      <v-list-item-content>{{ company.companyWebsite }}</v-list-item-content>
-                    </v-list-item>
-                    <v-list-item>
-                      <v-list-item-icon>
-                        <v-icon color="orange">mdi-account-tie</v-icon>
-                      </v-list-item-icon>
-                      <v-list-item-content>{{ company.contactPersonName }}</v-list-item-content>
-                    </v-list-item>
-                    <v-list-item>
-                      <v-list-item-icon>
-                        <v-icon color="red">mdi-email</v-icon>
-                      </v-list-item-icon>
-                      <v-list-item-content>{{ company.contactPersonEmail }}</v-list-item-content>
-                    </v-list-item>
-                    <v-list-item>
-                      <v-list-item-icon>
-                        <v-icon color="green">mdi-phone</v-icon>
-                      </v-list-item-icon>
-                      <v-list-item-content>{{ company.contactPersonPhone }}</v-list-item-content>
-                    </v-list-item>
-                    <v-list-item>
-                      <v-list-item-icon>
-                        <v-icon color="brown">mdi-factory</v-icon>
-                      </v-list-item-icon>
-                      <v-list-item-content>{{ company.industry }}</v-list-item-content>
-                    </v-list-item>
-                    <v-list-item>
-                      <v-list-item-icon>
-                        <v-icon color="purple">mdi-map-marker</v-icon>
-                      </v-list-item-icon>
-                      <v-list-item-content>{{ company.address }}</v-list-item-content>
-                    </v-list-item>
-                    <v-list-item>
-                      <v-list-item-icon>
-                        <v-icon color="blue">mdi-linkedin</v-icon>
-                      </v-list-item-icon>
-                      <v-list-item-content>{{ company.linkedin }}</v-list-item-content>
-                    </v-list-item>
-                    <v-list-item>
-                      <v-list-item-icon>
-                        <v-icon color="light-blue">mdi-twitter</v-icon>
-                      </v-list-item-icon>
-                      <v-list-item-content>{{ company.twitter }}</v-list-item-content>
-                    </v-list-item>
-                  </v-list>
-                </v-expansion-panel-content>
-              </v-expansion-panel>
-            </v-expansion-panels>
-          </v-card-text>
-        </v-card>
+                  </v-expansion-panel-header>
+                  <v-expansion-panel-content>
+                    <v-list style="max-height:300px; overflow:auto;">
+                      <v-list-item>
+                        <v-list-item-icon>
+                          <v-icon color="green">mdi-account-multiple</v-icon>
+                        </v-list-item-icon>
+                        <v-list-item-content>{{ company.companySize }}</v-list-item-content>
+                      </v-list-item>
+                      <v-list-item>
+                        <v-list-item-icon>
+                          <v-icon color="purple">mdi-web</v-icon>
+                        </v-list-item-icon>
+                        <v-list-item-content>{{ company.companyWebsite }}</v-list-item-content>
+                      </v-list-item>
+                      <v-list-item>
+                        <v-list-item-icon>
+                          <v-icon color="orange">mdi-account-tie</v-icon>
+                        </v-list-item-icon>
+                        <v-list-item-content>{{ company.contactPersonName }}</v-list-item-content>
+                      </v-list-item>
+                      <v-list-item>
+                        <v-list-item-icon>
+                          <v-icon color="red">mdi-email</v-icon>
+                        </v-list-item-icon>
+                        <v-list-item-content>{{ company.contactPersonEmail }}</v-list-item-content>
+                      </v-list-item>
+                      <v-list-item>
+                        <v-list-item-icon>
+                          <v-icon color="green">mdi-phone</v-icon>
+                        </v-list-item-icon>
+                        <v-list-item-content>{{ company.contactPersonPhone }}</v-list-item-content>
+                      </v-list-item>
+                      <v-list-item>
+                        <v-list-item-icon>
+                          <v-icon color="brown">mdi-factory</v-icon>
+                        </v-list-item-icon>
+                        <v-list-item-content>{{ company.industry }}</v-list-item-content>
+                      </v-list-item>
+                      <v-list-item>
+                        <v-list-item-icon>
+                          <v-icon color="purple">mdi-map-marker</v-icon>
+                        </v-list-item-icon>
+                        <v-list-item-content>{{ company.address }}</v-list-item-content>
+                      </v-list-item>
+                      <v-list-item>
+                        <v-list-item-icon>
+                          <v-icon color="blue">mdi-linkedin</v-icon>
+                        </v-list-item-icon>
+                        <v-list-item-content>{{ company.linkedin }}</v-list-item-content>
+                      </v-list-item>
+                      <v-list-item>
+                        <v-list-item-icon>
+                          <v-icon color="light-blue">mdi-twitter</v-icon>
+                        </v-list-item-icon>
+                        <v-list-item-content>{{ company.twitter }}</v-list-item-content>
+                      </v-list-item>
+                    </v-list>
+                  </v-expansion-panel-content>
+                </v-expansion-panel>
+              </v-expansion-panels>
+            </v-card-text>
+          </v-card>
+          </v-card>
       </v-col>
       <v-col cols="12" md="12">
-        <v-card  class="elevation-0 white--text" height="565" style="overflow:auto;">
+        <v-card  class="elevation-5 white--text" height="300" style="overflow:auto;">
           <v-card-title class="primary" style="position:sticky; left:0;top:0; z-index:1;">Today's Lectures</v-card-title>
           <v-card-text >
               <v-row>
