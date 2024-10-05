@@ -320,7 +320,7 @@ export default {
             console.log('This is the error : ', err);
             this.snackbarMessage = err.response.data.message;
             this.snackbarColor = 'error';
-            this.snackbar = true;  // Show the snackbar
+            this.snackbar = true;
           });
     },
     getStudents() {
