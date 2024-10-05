@@ -32,23 +32,22 @@
         <v-card class="px-0" color="primary">
           <v-card-title class="primary white--text"  color="primary">Companies</v-card-title>
           <v-card class="pa-5 overflow-auto" elevation="1" height="280" min-height="280">
-            <v-card-text>
               <v-expansion-panels>
                 <v-expansion-panel
                     v-for="company in companies"
                     :key="company.id"
-                    class="mb-2"
+                    class="mb-2 elevation-1"
                 >
-                  <v-expansion-panel-header>
-                    <v-chip color="">
-                      <v-icon color="blue" class="mr-2">mdi-office-building</v-icon>
+                  <v-expansion-panel-header class="px-0">
+                    <div class="d-flex align-center">
+                      <v-icon color="blue" class="mr-2 ml-2">mdi-linkedin</v-icon>
                       <span class="text-capitalize"> {{ company.name }}</span>
-                    </v-chip>
+                    </div>
 
                   </v-expansion-panel-header>
                   <v-expansion-panel-content>
                     <v-list style="max-height:300px; overflow:auto;">
-                      <v-list-item>
+                      <v-list-item class="pa-0 ma-0">
                         <v-list-item-icon>
                           <v-icon color="green">mdi-account-multiple</v-icon>
                         </v-list-item-icon>
@@ -106,39 +105,48 @@
                   </v-expansion-panel-content>
                 </v-expansion-panel>
               </v-expansion-panels>
-            </v-card-text>
           </v-card>
           </v-card>
       </v-col>
       <v-col cols="12" md="12">
         <v-card class="px-0" color="primary">
-          <v-card-title class="white--text">Latest News</v-card-title>
+          <v-card-title class="white--text">Today's Courses</v-card-title>
           <v-card class="pa-5 overflow-auto" elevation="1" height="240" min-height="240">
           <v-card-text >
               <v-row>
                 <v-col
                     v-for="course in getTodayCourses"
                     :key="course.id"
-                    cols="12"
+                    cols="3"
                 >
-                  <v-card class="mb-2" elevation="1">
-                    <v-card-title>
+                  <v-card class="mb-2" elevation="4">
+                    <v-card-title class="font-weight-medium" style="font-size:16px;">
                       {{ course.name }}
                     </v-card-title>
-                    <v-card-subtitle>
-                      <v-chip color="orange" text-color="white">
-                        <v-icon left>mdi-calendar-today</v-icon>
-                        {{ course.start_date }}
-                      </v-chip>
-                      <v-chip color="red" text-color="white" class="ml-2">
-                        <v-icon left>mdi-calendar-clock</v-icon>
-                        {{ course.end_date }}
-                      </v-chip>
-                    </v-card-subtitle>
+                    <div class="d-flex mx-3">
+                        <v-chip small color="orange" text-color="white">
+                          <v-icon small left>mdi-calendar-today</v-icon>
+                          {{ course.start_date }}
+                        </v-chip>
+                        <v-chip small color="red" text-color="white" class="ml-2">
+                          <v-icon  small left>mdi-calendar-clock</v-icon>
+                          {{ course.end_date }}
+                        </v-chip>
+                    </div>
                     <v-card-text>
-                      <p><v-icon color="purple">mdi-google-maps</v-icon> {{ course.location }}</p>
-                      <p><v-icon color="orange">mdi-clock</v-icon> {{ course.time }}</p>
-                      <p><v-icon color="green">mdi-account-multiple</v-icon> Max Students: {{ course.max_students }}</p>
+                      <div class="d-flex align-center">
+                          <v-icon small color="purple">mdi-google-maps</v-icon>
+                        {{ course.location }}
+                      </div>
+                      <div class="d-flex align-center my-2">
+                        <v-icon small  color="orange">mdi-clock</v-icon>
+                        {{ course.time }}
+                      </div>
+                      <div class="d-flex align-center ">
+                        <v-icon small  color="green">mdi-account-multiple</v-icon> Max Students: {{ course.max_students }}
+                      </div>
+
+
                     </v-card-text>
                   </v-card>
                 </v-col>

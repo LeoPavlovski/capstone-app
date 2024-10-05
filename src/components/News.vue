@@ -56,10 +56,10 @@
     </v-dialog>
     <Navigation class="w-100 w-md-25"></Navigation>
     <v-row class="text-center pa-5">
-      <v-col cols="12" md="3">
-        <v-card color="primary" elevation="3" >
+      <v-col cols="12" md="4">
+        <v-card color="primary"  elevation="3" >
           <v-card-title class="white--text">Create News</v-card-title>
-          <v-card elevation="2" class="pa-5" max-height="1000" min-height="795">
+          <v-card elevation="2" class="pa-5 overflow-auto"  height="350">
             <v-text-field v-model="news.title" dense outlined label="News Title"></v-text-field>
             <v-textarea dense outlined label="News Content" v-model="news.content"></v-textarea>
             <v-col
@@ -111,15 +111,16 @@
       </v-col>
 
       <!-- Active Internships Section -->
-      <v-col cols="12" md="9">
+      <v-col cols="12" md="8">
         <v-card color="primary" class="elevation-3 white--text">
           <v-card-title>News For CST Department</v-card-title>
           <v-data-table
               :items="newsData"
               :headers="newsHeaders"
               item-key="id"
+              fixed-header
               class="elevation-2"
-              height="735"
+              height="290"
               :loading="loading"
               loading-text="loading..."
           >
@@ -150,7 +151,8 @@
               :headers="myNewsHeaders"
               item-key="id"
               class="elevation-2"
-              height="735"
+              fixed-header
+              height="120"
               :loading="loading"
               loading-text="loading..."
           >
@@ -264,6 +266,9 @@ export default {
         publication_date:this.date
       };
       this.$store.dispatch('createNews',body).then(res=>{
+        this.news.title = '';
+        this.news.content = '';
+        this.date = '';
         this.getNews();
       });
     },

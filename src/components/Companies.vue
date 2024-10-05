@@ -95,10 +95,10 @@
     </v-dialog>
     <Navigation class="w-100 w-md-25"></Navigation>
     <v-row class="text-center pa-5">
-      <v-col cols="12" md="3">
+      <v-col cols="12" md="4">
         <v-card color="primary" elevation="3">
-          <v-card-title class="white--text">Create Company</v-card-title>
-          <v-card elevation="2" class="pa-5 internship-form">
+          <v-card-title class="white--text overflow-auto">Create Company</v-card-title>
+          <v-card elevation="2" class="pa-5 internship-form overflow-auto" height="290" >
             <v-text-field dense outlined label="Name" v-model="company.name"></v-text-field>
             <v-text-field dense outlined label="Company Website" v-model="company.companyWebsite"></v-text-field>
             <v-select :items="companySizes" item-text="name" item-value="id" v-model="company.companySize" dense outlined label="Company Size"></v-select>
@@ -109,14 +109,13 @@
             <v-text-field dense outlined label="Company Address" v-model="company.address"></v-text-field>
             <v-text-field dense outlined label="LinkedIn (optional)" v-model="company.linkedin"></v-text-field>
             <v-text-field dense outlined label="Twitter (optional)" v-model="company.twitter"></v-text-field>
-
             <v-btn :disabled="!isFormValid" color="primary" class="mt-4" width="100%" @click="addCompany">Submit</v-btn>
           </v-card>
         </v-card>
       </v-col>
 
       <!-- Active Internships Section -->
-      <v-col cols="12" md="9">
+      <v-col cols="12" md="8">
         <v-card color="primary" class="elevation-3 white--text">
           <v-card-title>All Existing Companies</v-card-title>
           <v-data-table
@@ -124,7 +123,7 @@
               :headers="companyHeaders"
               item-key="id"
               class="elevation-2"
-              height="625"
+              height="230"
               :loading="loading"
               loading-text="loading..."
           >
@@ -205,7 +204,7 @@
               :headers="companyHeaders"
               item-key="id"
               class="elevation-2"
-              height="350"
+              height="170"
               :loading="loading"
               loading-text="loading..."
           >
