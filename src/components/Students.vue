@@ -348,7 +348,7 @@ export default {
           .catch(err => {
             this.snackbarMessage = err.message;
             this.snackbarColor = 'error';
-            this.snackbar = true;  // Show the snackbar
+            this.snackbar = true;
             console.error('Error:', err.message);
           });
     },
