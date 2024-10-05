@@ -343,7 +343,7 @@ export default {
             console.log('Res: ', res);
             this.snackbarMessage = 'Student invited successfully!';
             this.snackbarColor = 'success';
-            this.snackbar = true;  // Show the snackbar
+            this.snackbar = true;
           })
           .catch(err => {
             this.snackbarMessage = err.message;
