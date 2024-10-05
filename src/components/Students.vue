@@ -1,6 +1,6 @@
 <template>
   <div class="d-flex">
-<!--    <v-dialog></v-dialog>-->
+    <!--    <v-dialog></v-dialog>-->
     <v-dialog v-model="dialog" width="500">
       <v-card color="primary" elevation="3" v-if="courseItem">
         <v-card-title class="white--text">Edit Course</v-card-title>
@@ -29,14 +29,14 @@
             <v-snackbar v-model="snackbar" :color="snackbarColor" timeout="3000">
               {{ snackbarMessage }}
             </v-snackbar>
-<!--            <v-text-field v-model="courseForm.name" dense outlined label="Course Name"></v-text-field>-->
-<!--            <v-textarea no-resize v-model="courseForm.description" dense outlined label="Course Description"></v-textarea>-->
-<!--            <v-text-field dense outlined label="Start Date" type="date" v-model="courseForm.start_date"></v-text-field>-->
-<!--            <v-text-field dense outlined label="End Date" type="date" v-model="courseForm.end_date"></v-text-field>-->
-<!--            <v-text-field dense outlined label="Time" type="time" v-model="courseForm.time"></v-text-field>-->
-<!--            <v-text-field dense outlined label="Location" v-model="courseForm.location"></v-text-field>-->
-<!--            <v-text-field dense outlined label="Course Code" v-model="courseForm.course_code"></v-text-field>-->
-<!--            <v-text-field dense outlined label="Max Students" type="number" v-model="courseForm.max_students"></v-text-field>-->
+            <!--            <v-text-field v-model="courseForm.name" dense outlined label="Course Name"></v-text-field>-->
+            <!--            <v-textarea no-resize v-model="courseForm.description" dense outlined label="Course Description"></v-textarea>-->
+            <!--            <v-text-field dense outlined label="Start Date" type="date" v-model="courseForm.start_date"></v-text-field>-->
+            <!--            <v-text-field dense outlined label="End Date" type="date" v-model="courseForm.end_date"></v-text-field>-->
+            <!--            <v-text-field dense outlined label="Time" type="time" v-model="courseForm.time"></v-text-field>-->
+            <!--            <v-text-field dense outlined label="Location" v-model="courseForm.location"></v-text-field>-->
+            <!--            <v-text-field dense outlined label="Course Code" v-model="courseForm.course_code"></v-text-field>-->
+            <!--            <v-text-field dense outlined label="Max Students" type="number" v-model="courseForm.max_students"></v-text-field>-->
             <v-select
                 :items="getUserInternships"
                 item-text="name"
@@ -73,31 +73,31 @@
               :loading="loading"
               loading-text="loading..."
           >
-<!--            <template v-slot:item.start_date="{item}">-->
-<!--              <v-icon color="primary">mdi-calendar-today</v-icon>-->
-<!--              {{item.start_date}}-->
-<!--            </template>-->
-<!--            <template v-slot:item.end_date="{item}">-->
-<!--              <v-icon color="red">mdi-calendar-clock</v-icon>-->
-<!--              {{item.end_date}}-->
-<!--            </template>-->
-<!--            <template v-slot:item.time="{item}">-->
-<!--              <v-icon color="orange">mdi-clock</v-icon>-->
-<!--              {{item.time}}-->
-<!--            </template>-->
-<!--            <template v-slot:item.location="{item}">-->
-<!--              <v-icon color="purple">mdi-google-maps</v-icon>-->
-<!--              {{item.location}}-->
-<!--            </template>-->
-<!--            <template v-slot:item.max_students="{item}">-->
-<!--              <v-icon color="green">mdi-account-multiple</v-icon>-->
-<!--              {{item.max_students}}-->
-<!--            </template>-->
+            <!--            <template v-slot:item.start_date="{item}">-->
+            <!--              <v-icon color="primary">mdi-calendar-today</v-icon>-->
+            <!--              {{item.start_date}}-->
+            <!--            </template>-->
+            <!--            <template v-slot:item.end_date="{item}">-->
+            <!--              <v-icon color="red">mdi-calendar-clock</v-icon>-->
+            <!--              {{item.end_date}}-->
+            <!--            </template>-->
+            <!--            <template v-slot:item.time="{item}">-->
+            <!--              <v-icon color="orange">mdi-clock</v-icon>-->
+            <!--              {{item.time}}-->
+            <!--            </template>-->
+            <!--            <template v-slot:item.location="{item}">-->
+            <!--              <v-icon color="purple">mdi-google-maps</v-icon>-->
+            <!--              {{item.location}}-->
+            <!--            </template>-->
+            <!--            <template v-slot:item.max_students="{item}">-->
+            <!--              <v-icon color="green">mdi-account-multiple</v-icon>-->
+            <!--              {{item.max_students}}-->
+            <!--            </template>-->
             <template v-slot:item="{item}">
               <tr>
                 <td class="text-left font-weight-medium" >
-                    <v-icon color="green">mdi-account-check</v-icon>
-                    {{item.name}}
+                  <v-icon color="green">mdi-account-check</v-icon>
+                  {{item.name}}
                 </td>
 
                 <td class="text-left font-weight-medium ">
@@ -159,9 +159,9 @@
                   </v-chip>
                 </td>
               </tr>
-<!--              <tr>-->
-<!--                <td>{{item.students.id}}</td>-->
-<!--              </tr>-->
+              <!--              <tr>-->
+              <!--                <td>{{item.students.id}}</td>-->
+              <!--              </tr>-->
             </template>
           </v-data-table>
         </v-card>
@@ -309,7 +309,19 @@ export default {
       const body = {
         id:this.user.id,
       }
-      this.$store.dispatch('getProfessorInvitations', body);
+      this.$store.dispatch('getProfessorInvitations', body)
+          .then(res => {
+            console.log('Res: ', res);
+            this.snackbarMessage = 'Invitations Generated.';
+            this.snackbarColor = 'success';
+            this.snackbar = true;  // Show the snackbar
+          })
+          .catch(err => {
+            console.log('This is the error : ' , err);
+            this.snackbarMessage = err.response.data.message;
+            this.snackbarColor = 'error';
+            this.snackbar = true;  // Show the snackbar
+          });
     },
     getStudents(){
       this.loading=true
