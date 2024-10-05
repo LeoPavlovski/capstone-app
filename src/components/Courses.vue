@@ -20,10 +20,10 @@
     </v-dialog>
     <Navigation class="w-100 w-md-25"></Navigation>
     <v-row class="text-center pa-5">
-      <v-col cols="12" md="3">
-        <v-card color="primary" elevation="3" >
+      <v-col cols="12" md="4">
+        <v-card color="primary" elevation="3">
           <v-card-title class="white--text">Create Course</v-card-title>
-          <v-card elevation="2" class="pa-5" max-height="1000" min-height="795">
+          <v-card elevation="2" class="pa-5 overflow-auto" max-height="300" min-height="300">
             <v-text-field v-model="courseForm.name" dense outlined label="Course Name"></v-text-field>
             <v-textarea no-resize v-model="courseForm.description" dense outlined label="Course Description"></v-textarea>
             <v-text-field dense outlined label="Start Date" type="date" v-model="courseForm.start_date"></v-text-field>
@@ -40,7 +40,7 @@
       </v-col>
 
       <!-- Active Internships Section -->
-      <v-col cols="12" md="9">
+      <v-col cols="12" md="8">
         <v-card color="primary" class="elevation-3 white--text">
           <v-card-title>Today's Lectures</v-card-title>
           <v-data-table
@@ -48,7 +48,7 @@
               :headers="courseHeaders"
               item-key="id"
               class="elevation-2"
-              height="735"
+              height="240"
               :loading="loading"
               loading-text="loading..."
           >
@@ -78,7 +78,7 @@
       <v-col cols="12" class="text-left">
         <v-card color="primary" class="elevation-3">
           <v-card-title class="white--text">My Courses</v-card-title>
-          <v-data-table :loading="loading" :headers="MyHeaders" :items="getMyCourses"  height="290">
+          <v-data-table :loading="loading" :headers="MyHeaders" :items="getMyCourses"  height="160">
             <template v-slot:item="{item}">
               <tr>
                 <td>{{item.name}}</td>

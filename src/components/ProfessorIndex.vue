@@ -5,7 +5,7 @@
       <v-col cols="12" md="6">
         <v-card class="px-0" color="primary">
           <v-card-title class="white--text">Latest News</v-card-title>
-          <v-card style="border-radius:0px !important;" class="pa-5 overflow-auto" elevation="1" height="280" min-height="280">
+          <v-card class="pa-5 overflow-auto" elevation="1" height="280" min-height="280">
             <v-expansion-panels>
               <v-expansion-panel v-for="item in news" :key="item.id">
                 <v-expansion-panel-header>
@@ -29,9 +29,9 @@
 
       <!-- Active Internships Section -->
       <v-col cols="6">
-        <v-card height="343" min-height="343" elevation="8">
+        <v-card class="px-0" color="primary">
           <v-card-title class="primary white--text"  color="primary">Companies</v-card-title>
-          <v-card elevation="0">
+          <v-card class="pa-5 overflow-auto" elevation="1" height="280" min-height="280">
             <v-card-text>
               <v-expansion-panels>
                 <v-expansion-panel
@@ -111,8 +111,9 @@
           </v-card>
       </v-col>
       <v-col cols="12" md="12">
-        <v-card  class="elevation-5 white--text" height="300" style="overflow:auto;">
-          <v-card-title class="primary" style="position:sticky; left:0;top:0; z-index:1;">Today's Lectures</v-card-title>
+        <v-card class="px-0" color="primary">
+          <v-card-title class="white--text">Latest News</v-card-title>
+          <v-card class="pa-5 overflow-auto" elevation="1" height="240" min-height="240">
           <v-card-text >
               <v-row>
                 <v-col
@@ -143,6 +144,7 @@
                 </v-col>
               </v-row>
           </v-card-text>
+        </v-card>
         </v-card>
       </v-col>
     </v-row>
