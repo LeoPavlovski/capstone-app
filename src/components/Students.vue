@@ -314,7 +314,7 @@ export default {
             console.log('Res: ', res);
             this.snackbarMessage = 'Invitations Generated.';
             this.snackbarColor = 'success';
-            this.snackbar = true;  // Show the snackbar
+            this.snackbar = true;
           })
           .catch(err => {
             console.log('This is the error : ', err);
