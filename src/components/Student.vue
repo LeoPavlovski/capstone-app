@@ -4,16 +4,10 @@
       <Navigation class="w-100 w-md-25"></Navigation>
       <v-row class="text-center pa-5">
         <v-col cols="12" md="6">
-          <v-card color="primary">
-            <v-card-title class="white--text">Apply For Internship</v-card-title>
-          </v-card>
-          <v-card elevation="2" class="pa-5">
-            <v-select :items="enrichedInternships" item-text="name" dense outlined label="Select Internship"></v-select>
-            <v-btn  :disabled="!isFormValid" color="primary" width="100%" @click="addCourse">Submit</v-btn>
-            <v-col cols="12" class="text-left px-0 mx-0">
-              <v-card color="primary" class="elevation-3">
+            <v-col cols="12" class="text-left ">
+              <v-card color="primary" class="elevation-3 mt-n3" >
                 <v-card-title class="white--text">Apply For Courses (CST Department)</v-card-title>
-                <v-data-table :loading="loading" :headers="courseHeaders" :items="filteredCourses"  height="250 ">
+                <v-data-table :loading="loading" :headers="courseHeaders" :items="filteredCourses"  height="480 ">
                   <template v-slot:item="{item}">
                     <tr>
                       <td>{{item.name}}</td>
@@ -54,7 +48,6 @@
                 </v-data-table>
               </v-card>
             </v-col>
-          </v-card>
           <v-card  color="primary" class="mt-5">
             <v-card-title class="white--text">My Courses</v-card-title>
             <v-data-table height="420" :items="myCourses" :headers="courseHeaders">
@@ -120,7 +113,7 @@
               </template>
             </v-data-table>
           </v-card>
-          <v-card  color="primary" class="mt-5">
+          <v-card  color="primary" class="mt-8">
             <v-card-title class="white--text">Today's Lectures</v-card-title>
             <v-data-table height="420" :items="filteredCoursesToday" :headers="courseHeaders">
 
@@ -251,6 +244,9 @@ export default {
     };
   },
   methods: {
+    getNews(){
+      this.$store.dispatch('getNews');
+    },
     getStudentInvitations(){
       const body ={
         id:this.user.id

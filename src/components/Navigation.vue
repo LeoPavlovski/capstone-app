@@ -76,13 +76,13 @@
               <v-icon
                   color="primary"
                   small
-                  v-if="index === 2 && notification"
+                  v-if="index === 1 && notification"
                   :class="notification ? 'bell-ring' : ''"
                   style="position:relative;"
               >
                 mdi-bell
               </v-icon>
-              <v-icon style="position:absolute;top:9px;right:13px;" color="red" x-small   v-if="index === 2 && notification">mdi-checkbox-blank-circle</v-icon>
+              <v-icon style="position:absolute;top:9px;right:13px;" color="red" x-small   v-if="index === 1 && notification">mdi-checkbox-blank-circle</v-icon>
             </div>
           </v-list-item>
         </v-list>
@@ -107,7 +107,6 @@ export default {
       ],
       studentRoute: [
         { title: 'Dashboard', icon: 'mdi-view-dashboard' },
-        { title: 'Profile', icon: 'mdi mdi-account-multiple' },
         { title: 'Internship Invitations', icon: 'mdi-clipboard-text' },
         { title: 'Logout', icon: 'mdi-logout' },
       ],

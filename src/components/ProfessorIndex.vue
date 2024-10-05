@@ -2,10 +2,10 @@
   <div class="d-flex">
     <Navigation class="w-100 w-md-25"></Navigation>
     <v-row class="text-center pa-5">
-      <v-col cols="12" md="4">
-        <v-card color="primary" elevation="3" >
+      <v-col cols="12" md="6">
+        <v-card color="primary" elevation="3">
           <v-card-title class="white--text">Latest News</v-card-title>
-          <v-card elevation="2" class="pa-5 overflow-auto" max-height="500" min-height="500">
+          <v-card elevation="2" class="pa-5 overflow-auto" height="565" min-height="565">
             <v-expansion-panels>
               <v-expansion-panel v-for="item in news" :key="item.id">
                 <v-expansion-panel-header>
@@ -28,45 +28,8 @@
       </v-col>
 
       <!-- Active Internships Section -->
-      <v-col cols="12" md="4">
-        <v-card  class="elevation-3 white--text" height="565" style="overflow:auto;">
-          <v-card-title class="primary" style="position:sticky; left:0;top:0; z-index:1;">Today's Lectures</v-card-title>
-          <v-card-text >
-            <v-container>
-              <v-row>
-                <v-col
-                    v-for="course in getTodayCourses"
-                    :key="course.id"
-                    cols="12"
-                >
-                  <v-card class="mb-2">
-                    <v-card-title>
-                      {{ course.name }}
-                    </v-card-title>
-                    <v-card-subtitle>
-                      <v-chip color="orange" text-color="white">
-                        <v-icon left>mdi-calendar-today</v-icon>
-                        {{ course.start_date }}
-                      </v-chip>
-                      <v-chip color="red" text-color="white" class="ml-2">
-                        <v-icon left>mdi-calendar-clock</v-icon>
-                        {{ course.end_date }}
-                      </v-chip>
-                    </v-card-subtitle>
-                    <v-card-text>
-                      <p><v-icon color="purple">mdi-google-maps</v-icon> {{ course.location }}</p>
-                      <p><v-icon color="orange">mdi-clock</v-icon> {{ course.time }}</p>
-                      <p><v-icon color="green">mdi-account-multiple</v-icon> Max Students: {{ course.max_students }}</p>
-                    </v-card-text>
-                  </v-card>
-                </v-col>
-              </v-row>
-            </v-container>
-          </v-card-text>
-        </v-card>
-      </v-col>
-      <v-col cols="4">
-        <v-card>
+      <v-col cols="6">
+        <v-card height="630" min-height="600">
           <v-card-title class="primary white--text"  color="primary">Companies</v-card-title>
           <v-card-text>
             <v-expansion-panels>
@@ -145,6 +108,41 @@
           </v-card-text>
         </v-card>
       </v-col>
+      <v-col cols="12" md="12">
+        <v-card  class="elevation-0 white--text" height="565" style="overflow:auto;">
+          <v-card-title class="primary" style="position:sticky; left:0;top:0; z-index:1;">Today's Lectures</v-card-title>
+          <v-card-text >
+              <v-row>
+                <v-col
+                    v-for="course in getTodayCourses"
+                    :key="course.id"
+                    cols="12"
+                >
+                  <v-card class="mb-2" elevation="1">
+                    <v-card-title>
+                      {{ course.name }}
+                    </v-card-title>
+                    <v-card-subtitle>
+                      <v-chip color="orange" text-color="white">
+                        <v-icon left>mdi-calendar-today</v-icon>
+                        {{ course.start_date }}
+                      </v-chip>
+                      <v-chip color="red" text-color="white" class="ml-2">
+                        <v-icon left>mdi-calendar-clock</v-icon>
+                        {{ course.end_date }}
+                      </v-chip>
+                    </v-card-subtitle>
+                    <v-card-text>
+                      <p><v-icon color="purple">mdi-google-maps</v-icon> {{ course.location }}</p>
+                      <p><v-icon color="orange">mdi-clock</v-icon> {{ course.time }}</p>
+                      <p><v-icon color="green">mdi-account-multiple</v-icon> Max Students: {{ course.max_students }}</p>
+                    </v-card-text>
+                  </v-card>
+                </v-col>
+              </v-row>
+          </v-card-text>
+        </v-card>
+      </v-col>
     </v-row>
   </div>
 </template>
@@ -159,6 +157,7 @@ export default {
     await this.getCourses();
     await this.getCompanies();
     await this.getNews();
+    await this
   },
   components: {
     Navigation,
