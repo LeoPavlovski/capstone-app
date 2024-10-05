@@ -188,11 +188,11 @@ export default {
   computed: {
     ...mapState({
       user: state => state.user,
-      users:state=>state.users,
+      users: state => state.users,
       courses: state => state.courses,
-      internships:state=>state.internships,
-      students:state=>state.students,
-      professorInvitations:state=>state.professorInvitations
+      internships: state => state.internships,
+      students: state => state.students,
+      professorInvitations: state => state.professorInvitations
     }),
     getUserInternships() {
       return this.internships.filter(item => item.user_id === this.user.id);
@@ -219,8 +219,8 @@ export default {
           this.courseItem.max_students
       );
     },
-    getMyCourses(){
-      const myCourses  = this.courses.filter(course =>course.user_id === this.user.id);
+    getMyCourses() {
+      const myCourses = this.courses.filter(course => course.user_id === this.user.id);
       return myCourses;
     },
     getTodayCourses() {
@@ -247,19 +247,19 @@ export default {
       snackbarMessage: '',
       snackbarColor: 'success',  // 'success' or 'error'
       internshipHeaders: [
-        { text: "Student Name", value: "student" },
-        { text: "Student Email", value: "email" },
-        { text: "Internship Name", value: "name" },
-        { text: "Company", value: "company" },
-        { text: "Start Date", value: "start_date" },
-        { text: "End Date", value: "end_date" },
-        { text: "Deadline", value: "deadline" },
-        { text: "Scholarship", value: "stipend" },
-        { text: "Status", value: "status" },
+        {text: "Student Name", value: "student"},
+        {text: "Student Email", value: "email"},
+        {text: "Internship Name", value: "name"},
+        {text: "Company", value: "company"},
+        {text: "Start Date", value: "start_date"},
+        {text: "End Date", value: "end_date"},
+        {text: "Deadline", value: "deadline"},
+        {text: "Scholarship", value: "stipend"},
+        {text: "Status", value: "status"},
       ],
-      internshipId:null,
-      studentId:null,
-      courseData:[],
+      internshipId: null,
+      studentId: null,
+      courseData: [],
       courseForm: {
         name: '',
         description: '',
@@ -270,25 +270,25 @@ export default {
         course_code: '',
         max_students: null,
       },
-      loading:false,
+      loading: false,
       dialog: false,
       stipendOptions: [
-        { id: 1, name: "Yes" },
-        { id: 0, name: "No" }
+        {id: 1, name: "Yes"},
+        {id: 0, name: "No"}
       ],
-      studentHeaders:[
-        { text: "Name", value: "name" },
-        { text: "Surname", value: 'surname' },
-        { text: "Course Title", value: "title" },
-        { text: "Course Description", value: 'description' },
-        { text: "Start Date", value: "start_date" },
-        { text: "End Date", value: "end_date" },
+      studentHeaders: [
+        {text: "Name", value: "name"},
+        {text: "Surname", value: 'surname'},
+        {text: "Course Title", value: "title"},
+        {text: "Course Description", value: 'description'},
+        {text: "Start Date", value: "start_date"},
+        {text: "End Date", value: "end_date"},
       ],
       MyHeaders: [
-        { text: "Course Name", value: "name" },
-        { text: "Course Code", value: "course_code" },
-        { text: "Start Date", value: "start_date" },
-        { text: "End Date", value: "end_date" },
+        {text: "Course Name", value: "name"},
+        {text: "Course Code", value: "course_code"},
+        {text: "Start Date", value: "start_date"},
+        {text: "End Date", value: "end_date"},
       ],
       intershipForm: {
         name: "",
@@ -305,9 +305,9 @@ export default {
     };
   },
   methods: {
-    getProfessorInvitations(){
+    getProfessorInvitations() {
       const body = {
-        id:this.user.id,
+        id: this.user.id,
       }
       this.$store.dispatch('getProfessorInvitations', body)
           .then(res => {
@@ -317,18 +317,18 @@ export default {
             this.snackbar = true;  // Show the snackbar
           })
           .catch(err => {
-            console.log('This is the error : ' , err);
+            console.log('This is the error : ', err);
             this.snackbarMessage = err.response.data.message;
             this.snackbarColor = 'error';
             this.snackbar = true;  // Show the snackbar
           });
     },
-    getStudents(){
-      this.loading=true
+    getStudents() {
+      this.loading = true
       const body = {
-        id:this.user.id,
+        id: this.user.id,
       }
-      this.$store.dispatch('getMyStudents' , body).then(res =>{
+      this.$store.dispatch('getMyStudents', body).then(res => {
         this.loading = false;
       });
     },
@@ -352,17 +352,18 @@ export default {
             console.error('Error:', err.message);
           });
     },
-    getCourses(){
+    getCourses() {
       this.$store.dispatch('getCourses')
     },
-    sendInvite(){
+    sendInvite() {
 
     },
     getUsers() {
       this.$store.dispatch('getUsers');
     },
     getInternships() {
-      this.$store.dispatch('getInternships').then(res=>{});
+      this.$store.dispatch('getInternships').then(res => {
+      });
     },
     submitEdit() {
       const body = {
@@ -374,7 +375,7 @@ export default {
         location: this.courseItem.location,
         course_code: this.courseItem.course_code,
         max_students: this.courseItem.max_students,
-        id:this.courseItem.id,
+        id: this.courseItem.id,
       };
       this.$store.dispatch('updateCourse', body).then(res => {
         this.getCourses();
@@ -382,7 +383,7 @@ export default {
       });
     },
     openDialog(item) {
-      this.courseItem = { ...item };
+      this.courseItem = {...item};
 
       this.dialog = true;
     },
