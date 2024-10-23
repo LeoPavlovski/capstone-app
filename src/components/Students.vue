@@ -24,7 +24,7 @@
       <v-col cols="12" md="4">
         <v-card color="primary" elevation="3" >
           <v-card-title class="white--text">Invite Student For An Internship</v-card-title>
-          <v-card elevation="2" class="pa-5" max-height="300 " min-height="300">
+          <v-card elevation="2" class="pa-5" max-height="510 " min-height="510">
 
             <v-snackbar v-model="snackbar" :color="snackbarColor" timeout="3000">
               {{ snackbarMessage }}
@@ -69,7 +69,7 @@
               :headers="studentHeaders"
               item-key="id"
               class="elevation-2"
-              height="240"
+              height="450"
               :loading="loading"
               loading-text="loading..."
           >

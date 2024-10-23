@@ -23,7 +23,7 @@
       <v-col cols="12" md="4">
         <v-card color="primary" elevation="3">
           <v-card-title class="white--text">Create Course</v-card-title>
-          <v-card elevation="2" class="pa-5 overflow-auto" max-height="300" min-height="300">
+          <v-card elevation="2" class="pa-5 overflow-auto" max-height="510" min-height="510">
             <v-text-field v-model="courseForm.name" dense outlined label="Course Name"></v-text-field>
             <v-textarea no-resize v-model="courseForm.description" dense outlined label="Course Description"></v-textarea>
             <v-text-field dense outlined label="Start Date" type="date" v-model="courseForm.start_date"></v-text-field>
@@ -48,7 +48,7 @@
               :headers="courseHeaders"
               item-key="id"
               class="elevation-2"
-              height="240"
+              height="450"
               :loading="loading"
               loading-text="loading..."
           >
