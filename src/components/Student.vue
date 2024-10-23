@@ -7,7 +7,7 @@
             <v-col cols="12" class="text-left ">
               <v-card color="primary" class="elevation-3 mt-n3" >
                 <v-card-title class="white--text">Apply For Courses (CST Department)</v-card-title>
-                <v-data-table :loading="loading" :headers="courseHeaders" :items="filteredCourses"  height="480 ">
+                <v-data-table :loading="loading" :headers="courseHeaders" :items="filteredCourses"  height="280">
                   <template v-slot:item="{item}">
                     <tr>
                       <td>{{item.name}}</td>
@@ -52,9 +52,9 @@
                 </v-data-table>
               </v-card>
             </v-col>
-          <v-card  color="primary" class="mt-5">
+          <v-card  color="primary" class="mt-5 mx-2">
             <v-card-title class="white--text">My Courses</v-card-title>
-            <v-data-table height="420" :items="myCourses" :headers="myCoursesHeaders">
+            <v-data-table height="280" :items="myCourses" :headers="myCoursesHeaders">
               <template v-slot:item="{item}">
                 <tr>
                   <td class="text-left">{{item.name}}</td>
@@ -78,7 +78,7 @@
                 :headers="internshipHeaders"
                 item-key="id"
                 class="elevation-2"
-                height="480"
+                height="280"
                 :loading="loading"
                 loading-text="loading..."
             >
@@ -112,8 +112,7 @@
               </template>
               <template v-slot:item.duration="{item}">
                 <div class="d-flex" style="width:100px;">
-                  <v-icon class="mr-2" color="orange">mdi-clock</v-icon>
-                  <span>{{item.duration}}</span>
+                  <v-chip color="orange" class="white--text">{{getDurationTime(item)}} Days</v-chip>
                 </div>
               </template>
               <template v-slot:item.deadline="{item}">
@@ -142,7 +141,7 @@
           </v-card>
           <v-card  color="primary" class="mt-8">
             <v-card-title class="white--text">Today's Lectures</v-card-title>
-            <v-data-table height="420" :items="filteredCoursesByWeekday" :headers="myCoursesHeaders">
+            <v-data-table height="280" :items="filteredCoursesByWeekday" :headers="myCoursesHeaders">
               <template v-slot:item="{item}">
                 <tr>
                   <td class="text-left">{{item.name}}</td>
@@ -291,6 +290,13 @@ export default {
     };
   },
   methods: {
+    getDurationTime(item) {
+      const startDate = new Date(item.start_date);
+      const endDate = new Date(item.end_date);
+      const durationInMilis = endDate - startDate;
+      const durationInDays = Math.ceil(durationInMilis/ (1000 * 60 * 60 * 24))
+      return durationInDays
+    },
     leaveCourse(item){
       console.log(item);
       const body= {

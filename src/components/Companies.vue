@@ -98,7 +98,7 @@
       <v-col cols="12" md="4">
         <v-card color="primary" elevation="3">
           <v-card-title class="white--text overflow-auto">Create Company</v-card-title>
-          <v-card elevation="2" class="pa-5 internship-form overflow-auto" height="290" >
+          <v-card elevation="2" class="pa-5 internship-form overflow-auto" height="510" >
             <v-text-field dense outlined label="Name" v-model="company.name"></v-text-field>
             <v-text-field dense outlined label="Company Website" v-model="company.companyWebsite"></v-text-field>
             <v-select :items="companySizes" item-text="name" item-value="id" v-model="company.companySize" dense outlined label="Company Size"></v-select>
@@ -123,7 +123,7 @@
               :headers="companyHeaders"
               item-key="id"
               class="elevation-2"
-              height="230"
+              height="450"
               :loading="loading"
               loading-text="loading..."
           >
@@ -204,7 +204,7 @@
               :headers="companyHeaders"
               item-key="id"
               class="elevation-2"
-              height="170"
+              height="150"
               :loading="loading"
               loading-text="loading..."
           >

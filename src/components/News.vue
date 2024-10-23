@@ -48,7 +48,7 @@
               </v-date-picker>
             </v-dialog>
           </v-col>
-          <v-text-field dense outlined :disabled="true" v-model="newsItem.author"></v-text-field>
+          <v-text-field dense outlined :disabled="true" v-model="user.name"></v-text-field>
 
           <v-btn :disabled="!isFormValidEdit"  color="primary" class="mt-16"  width="100%" @click="submitEdit">Submit</v-btn>
         </v-card>
@@ -59,7 +59,7 @@
       <v-col cols="12" md="4">
         <v-card color="primary"  elevation="3" >
           <v-card-title class="white--text">Create News</v-card-title>
-          <v-card elevation="2" class="pa-5 overflow-auto"  height="350">
+          <v-card elevation="2" class="pa-5 overflow-auto"  height="510">
             <v-text-field v-model="news.title" dense outlined label="News Title"></v-text-field>
             <v-textarea dense outlined label="News Content" v-model="news.content"></v-textarea>
             <v-col
@@ -85,6 +85,7 @@
                 <v-date-picker
                     v-model="date"
                     scrollable
+                    :min="today"
                 >
                   <v-spacer></v-spacer>
                   <v-btn
@@ -104,8 +105,8 @@
                 </v-date-picker>
               </v-dialog>
             </v-col>
-            <v-text-field disabled dense outlined label="Author" v-model="news.author"></v-text-field>
-            <v-btn  :disabled="!isFormValid" color="primary" class="mt-16"  width="100%" @click="addNews">Submit</v-btn>
+            <v-text-field disabled dense outlined label="Author" v-model="user.name"></v-text-field>
+            <v-btn  :disabled="!isFormValid" color="primary"    width="100%" @click="addNews">Submit</v-btn>
           </v-card>
         </v-card>
       </v-col>
@@ -120,7 +121,7 @@
               item-key="id"
               fixed-header
               class="elevation-2"
-              height="290"
+              height="450"
               :loading="loading"
               loading-text="loading..."
           >
@@ -192,6 +193,7 @@ export default {
     await this.getUsers();
     await this.getCourses();
     await this.getNews();
+    console.log('adsidjas' , this.user);
 
   },
   components: {
@@ -230,6 +232,7 @@ export default {
       modal: false,
       menu2: false,
       courseData:[],
+      today: new Date().toISOString().split('T')[0],
       news:{
         title:'',
         content:'',
@@ -268,7 +271,6 @@ export default {
       this.$store.dispatch('createNews',body).then(res=>{
         this.news.title = '';
         this.news.content = '';
-        this.date = '';
         this.getNews();
       });
     },

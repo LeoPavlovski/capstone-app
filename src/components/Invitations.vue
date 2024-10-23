@@ -6,7 +6,7 @@
         <v-col cols="12" md="6">
           <v-card color="primary white--text">
             <v-card-title>Your Internship Invitations </v-card-title>
-            <v-data-table height="500"  :headers="myHeaders" :items="invitations.invitations">
+            <v-data-table height="350"  :headers="myHeaders" :items="invitations.invitations">
               <template v-slot:item="{item}">
                <tr v-if="item.status === 'pending'">
                  <td  class="text-left">{{item.internship.name}}</td>
@@ -34,7 +34,7 @@
         <v-col cols="12" md="6">
           <v-card color="primary white--text">
             <v-card-title>Your Past Internships</v-card-title>
-            <v-data-table height="500" :headers="myHeaders" :items="invitations.invitations">
+            <v-data-table height="350" :headers="myHeaders" :items="invitations.invitations">
               <template v-slot:item="{item}">
                 <tr v-if="item.status !== 'pending'">
                   <td class="text-left">{{item.internship.name}}</td>
@@ -64,7 +64,7 @@
                 :headers="newsHeaders"
                 item-key="id"
                 class="elevation-2"
-                height="400"
+                height="250"
                 :loading="loading"
                 loading-text="loading..."
             >
