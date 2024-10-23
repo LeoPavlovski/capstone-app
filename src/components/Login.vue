@@ -43,10 +43,7 @@
                   </v-card-text>
                       <v-card-text class="text-center mt-7">
                         <h3 class="" style="font-size:14px;">Don't Have an Account Yet?</h3>
-                        <h6
-                            class=" mt-1"
-                            style="font-size:14px;"
-                        >Let's get you all set up so you can<br> start creating your your first onboarding experience</h6>
+                        <h6 class=" mt-1" style="font-size:14px;">Let's get you all set up so you can<br> start creating your your first onboarding experience</h6>
                           <v-btn width="30%" small color="red white--text" class="mt-7" dark rounded outlined  @click="step++">SIGN UP</v-btn>
                       </v-card-text>
 
@@ -54,34 +51,23 @@
               </v-row>
             </v-window-item>
             <v-window-item :value="2">
-              <v-row >
-                <v-col cols="12" md="6" class="blue rounded-br-xl">
-                  <div style="  text-align: center; padding: 180px 0;">
-                    <v-card-text class="white--text" >
-                      <h3 class="text-center " style="font-size:16px;">Already Signed up?</h3>
-                      <h6
-                          class="text-center"
-                          style="font-size:16px;"
-                      >Log in to your account so you can continue building and<br>  editing your onboarding flows</h6>
+              <v-row dense>
+                <v-col cols="12" md="12">
+                  <div>
+                    <v-card-text>
+                      <h3 class="text-center mb-2 " style="font-size:16px;">Already Signed up?</h3>
+                      <h6 class="text-center" style="font-size:16px;">Log in to your account so you can continue <br> building  and editing your onboarding flows</h6>
                     </v-card-text>
-                    <div class="text-center">
-                      <v-btn  tile outlined dark @click="step--">Log in</v-btn>
+                    <div class="text-center px-6">
+                      <v-btn color="red white--text"  dark rounded outlined  block  @click="step--">Log in</v-btn>
                     </div>
                   </div>
-                </v-col>
 
-                <v-col cols="12" md="6">
-                  <v-card-text class="mt-12">
-                    <h4
-                        class="text-center"
-                        style="font-size:16px;"
-                    >Sign Up for an Account</h4>
-                    <h6
-                        class="text-center mt-3 mb-16  grey--text " style="font-size:16px;"
-                    >Let's get you all set up so you can start creatin your <br>
-                      first onboarding experiance</h6>
+                  <v-card-text>
+                    <h4 class="text-center" style="font-size:16px;">Sign Up for an Account</h4>
+                    <h6 class="text-center mt-3 mb-3 grey--text " style="font-size:16px;">Let's get you all set up so you can start creating your <br>first onboarding experience</h6>
                     <v-row align="center" justify="center">
-                      <v-col cols="12" sm="8">
+                      <v-col cols="6" style="width:20px;">
                         <v-text-field
                             label="Name"
                             outlined
@@ -98,6 +84,8 @@
                             autocomplete="false"
                             v-model="lastName"
                         />
+                      </v-col>
+                      <v-col cols="6" style="width:20px;">
                         <v-text-field
                             label="Email"
                             outlined
@@ -114,24 +102,26 @@
                             autocomplete="false"
                             type="password"
                             v-model="password"
-
                         />
-                          <v-select
-                              v-model="staff"
-                              :items="users"
-                              item-text="role"
-                              item-value="id"
-                              dense
-                              outlined
-                              class=""
-                              label="Select Role"
-                          >
-                          </v-select>
-                        <v-btn @click="performRegister" color="blue" dark block tile>Sign up</v-btn>
                       </v-col>
+                      <v-select
+                          v-model="staff"
+                          :items="users"
+                          item-text="role"
+                          item-value="id"
+                          dense
+                          outlined
+                          class="px-3 mt-n2"
+                          label="Select Role"
+                      >
+                      </v-select>
                     </v-row>
                   </v-card-text>
+                  <div class="d-flex align-center justify-center ">
+                    <v-btn class="mb-5"  small @click="performRegister" color="blue" dark rounded>Sign up</v-btn>
+                  </div>
                 </v-col>
+
               </v-row>
             </v-window-item>
           </v-window>
