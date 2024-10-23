@@ -281,6 +281,12 @@ export default new Vuex.Store({
       return response;
     },
 
+    async leaveCourse({ commit } , body) {
+      const response = await axios.post(`http://localhost:8000/api/leave-course`, body);
+      return response;
+    },
+
+
   },
   modules: {
   }

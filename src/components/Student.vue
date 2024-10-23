@@ -62,6 +62,9 @@
                   <td class="text-left">{{ getDayOfWeek(item.start_date) }}</td>
                   <td class="text-left">{{ item.time.slice(0, 5) }}</td>
                   <td class="text-left">{{item.location}}</td>
+                  <td>
+                    <v-btn small color="red" class="white--text" @click="leaveCourse(item)">Leave Course</v-btn>
+                  </td>
                 </tr>
               </template>
             </v-data-table>
@@ -169,7 +172,6 @@ export default {
     await this.getInternships();
     await this.getStudentCourses();
     await this.getStudentInvitations();
-    console.log('myCourses : ' , this.myCourses);
   },
   components: {
     Navigation,
@@ -274,6 +276,7 @@ export default {
         { text: "Day", value: "day" },
         { text: "Time", value: "time" },
         { text: "Location", value: "location" },
+        { text: "", value: "", sortable:false },
       ],
       courseHeaders: [
         { text: "Course Name", value: "name" },
@@ -288,6 +291,17 @@ export default {
     };
   },
   methods: {
+    leaveCourse(item){
+      console.log(item);
+      const body= {
+        user_id:this.user.id,
+        course_id:item.id,
+      }
+      console.log('body : ' , body);
+      this.$store.dispatch('leaveCourse',body).then(res=>{
+        this.getStudentCourses();
+      });
+    },
     isDeadlineViable(deadline) {
       const today = new Date(); // Get today's date
       const deadlineDate = new Date(deadline); // Convert the deadline string to a Date object
