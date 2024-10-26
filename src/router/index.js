@@ -83,6 +83,12 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../components/Invitations.vue')
   },
   {
+    path: '/adduser',
+    name: 'Create User',
+    meta: { requiresAuth: true } , // This route requires authentication
+    component: () => import(/* webpackChunkName: "about" */ '../components/AddUser.vue')
+  },
+  {
     path: '/news',
     name: 'News',
     meta: { requiresAuth: true } , // This route requires authentication

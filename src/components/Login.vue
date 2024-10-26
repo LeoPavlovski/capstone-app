@@ -33,6 +33,7 @@
                               autocomplete="false"
                               type="password"
                           />
+
                         </div>
                         <div class="mx-2 mt-2">
                           <v-btn  @click="performLogin" color="blue" dark rounded block>Log in</v-btn>
@@ -115,6 +116,17 @@
                           label="Select Role"
                       >
                       </v-select>
+                      <v-select
+                          v-model="department"
+                          :items="departments"
+                          item-text="departmentName"
+                          item-value="id"
+                          dense
+                          outlined
+                          class="px-3 mt-n2"
+                          label="Select Department"
+                      >
+                      </v-select>
                     </v-row>
                   </v-card-text>
                   <div class="d-flex align-center justify-center ">
@@ -138,6 +150,8 @@ import {mapGetters, mapState} from "vuex";
 
 export default {
   data: () => ({
+    departments:[{id:1,departmentName:'Computer Science'},{id:2,departmentName:'Business Economics'}],
+    department:null,
     role:null,
     staff:null,
     step: 1,
@@ -146,7 +160,7 @@ export default {
     lastName:'',
     password:'',
     username:'',
-    users:[{id:1,role:'Student'}, {id:2, role:'Professor'},{id:3,role:'Admin'}],
+    users:[{id:3,role:'Admin'}],
   }),
   computed:{
     ...mapState({
@@ -190,12 +204,14 @@ export default {
         roleId : parseInt(this.staff),
         roleName : this.role,
         name:this.firstName,
-        surname:this.lastName
+        surname:this.lastName,
+        department:this.department,
       }
 
-      this.$store.dispatch('register',body).then(res=>{
-        this.step=0;
-      })
+      // this.$store.dispatch('register',body).then(res=>{
+      //   this.step=0;
+      // })
+      console.log('Body: ' , body);
     }
   },
   props: {

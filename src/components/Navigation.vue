@@ -113,6 +113,7 @@ export default {
       adminRoute: [
         { title: 'Companies', icon: 'mdi-view-dashboard' },
         { title: 'News', icon: 'mdi-newspaper' },
+        { title: 'User', icon: 'mdi-account-multiple-plus' },
         { title: 'Logout', icon: 'mdi-logout' },
       ],
       right: null,
@@ -160,6 +161,8 @@ export default {
           return '/companies';
         case 'News':
           return '/news';
+        case 'User':
+              return '/adduser'
         default:
           return '/dashboard';
       }

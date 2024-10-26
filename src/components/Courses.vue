@@ -44,7 +44,7 @@
         <v-card color="primary" class="elevation-3 white--text">
           <v-card-title>Today's Lectures</v-card-title>
           <v-data-table
-              :items="getTodayCourses"
+              :items="filteredCoursesByWeekday"
               :headers="courseHeaders"
               item-key="id"
               class="elevation-2"
@@ -163,7 +163,17 @@ export default {
           course.user_id === this.user.id && course.start_date === today
       );
       return myCourses;
-    }
+    },
+    filteredCoursesByWeekday() {
+      const today = new Date().getDay(); // Get today's day of the week (0 = Sunday, 1 = Monday, etc.)
+
+      return this.courses.filter(course => {
+        const courseStartDate = new Date(course.start_date); // Parse the course's start date
+        const courseDay = courseStartDate.getDay(); // Get the weekday for the course's start date
+
+        return courseDay === today; // Return only courses where the start date matches today's day of the week
+      });
+    },
   },
   data() {
     return {
