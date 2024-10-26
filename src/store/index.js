@@ -26,6 +26,7 @@ export default new Vuex.Store({
   },
   mutations: {
     SET_USER(state, user) {
+      console.log('User from set_user '  , user);
       state.user = user;
     },
     SET_TOKEN(state, token) {
@@ -55,8 +56,9 @@ export default new Vuex.Store({
     GET_MY_INVITATIONS(state,payload){
       state.invitations = payload.data
     },
-    GET_COMPANIES(state,payload){
-      state.companies = payload.data
+    GET_COMPANIES(state, payload) {
+      state.companies = payload.data.filter(company => company.department === state.user.department);
+      console.log('Filtered Companies: ', state.companies);
     },
     GET_NEWS(state,payload){
         state.news = payload.data

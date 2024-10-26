@@ -6,7 +6,7 @@
         <v-col cols="12" md="6">
             <v-col cols="12" class="text-left ">
               <v-card color="primary" class="elevation-3 mt-n3" >
-                <v-card-title class="white--text">Apply For Courses {{this.user.departmentName}}</v-card-title>
+                <v-card-title class="white--text">Apply For Courses for {{this.user.departmentName}}</v-card-title>
                 <v-data-table :loading="loading" :headers="courseHeaders" :items="filteredCourses"  height="280">
                   <template v-slot:item="{item}">
                     <tr>

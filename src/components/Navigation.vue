@@ -20,6 +20,14 @@
               <v-list-item-subtitle>Logged In</v-list-item-subtitle>
             </v-list-item-content>
           </v-list-item>
+          <v-list-item two-line>
+            <v-list-item-content>
+              <v-list-item-title class="text-capitalize ml-1">Department</v-list-item-title>
+              <v-list-item-subtitle>
+                <v-chip color="primary">   {{user.departmentName}}</v-chip>
+              </v-list-item-subtitle>
+            </v-list-item-content>
+          </v-list-item>
         </template>
 
         <v-divider></v-divider>
