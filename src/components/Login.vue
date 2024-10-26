@@ -200,6 +200,7 @@ export default {
         this.role =  'Admin'
       }
       //const intStaff = parseInt(this.staff);
+      const department = parseInt(this.department);
       const body ={
         email:this.email,
         password:this.password,
@@ -208,6 +209,7 @@ export default {
         name:this.firstName,
         surname:this.lastName,
         department:parseInt(this.department),
+        departmentName:department === 1? this.departments[0].departmentName : this.departments[1].departmentName
       }
 
       this.$store.dispatch('register',body).then(res=>{

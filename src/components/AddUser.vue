@@ -54,13 +54,15 @@ export default{
       // After that we are going to need to make a department for the user.
       //Options : CST , Law, Business Economics ,Faculty of health sciences.
       //And only see users which they have been in the same department.
+      const department = parseInt(localStorage.getItem('department'));
       const body ={
         name:this.roleObject.name,
         surname:this.roleObject.surname,
         email:this.roleObject.email,
         password:this.roleObject.password,
         roleId:this.roleId,
-        department:parseInt(localStorage.getItem('department'))
+        department:parseInt(localStorage.getItem('department')),
+        departmentName: department === 1 ? 'Computer Science' : 'Business Economics'
       }
       this.$store.dispatch('register', body);
     }
