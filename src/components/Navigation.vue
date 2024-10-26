@@ -182,6 +182,7 @@ export default {
 
       // Example: Clear token and redirect to login page
       localStorage.removeItem('authToken'); // or however you store auth
+      localStorage.removeItem('department'); // or however you store auth
       this.$router.push('/login');
     }
   }

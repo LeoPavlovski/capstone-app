@@ -187,8 +187,10 @@ export default {
         if(this.user.roleId === 3){
           this.$router.push('/companies');
         }
+        console.log('user: ' , this.user);
+        localStorage.setItem('department', this.user.department);
       })
-    },
+      },
     performRegister(){
       if(this.staff === 1){
         this.role =  'Student'
@@ -205,12 +207,12 @@ export default {
         roleName : this.role,
         name:this.firstName,
         surname:this.lastName,
-        department:this.department,
+        department:parseInt(this.department),
       }
 
-      // this.$store.dispatch('register',body).then(res=>{
-      //   this.step=0;
-      // })
+      this.$store.dispatch('register',body).then(res=>{
+        this.step=0;
+      })
       console.log('Body: ' , body);
     }
   },

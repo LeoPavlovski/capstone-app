@@ -290,6 +290,7 @@ export default {
   mounted() {
     //this.getUsers();
     this.getCompanies();
+    console.log('User new : ' , this.user);
 
     //this.getInternships();
   },

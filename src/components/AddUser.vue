@@ -10,7 +10,7 @@
           <v-text-field class="py-5" outlined label="Surname" v-model="roleObject.surname" dense hide-details></v-text-field>
           <v-text-field outlined label="Email" dense hide-details v-model="roleObject.email"></v-text-field>
           <v-text-field type="password" class="py-5" dense hide-details outlined label="Password" v-model="roleObject.password"></v-text-field>
-          <v-select :menu-props="{offsetY:true}" outlined dense hide-details label="Select Role" v-model="roleObject.roleId" :items="roles" item-text="role" item-value="id"></v-select>
+          <v-select :menu-props="{offsetY:true}" outlined dense hide-details label="Select Role" v-model="roleId" :items="roles" item-text="role" item-value="id"></v-select>
           <!-- You can add more fields as needed -->
 <!--          TODO call the register api here.-->
           <div class="d-flex align-center justify-center">
@@ -30,12 +30,12 @@ export default{
   components: {Navigation},
   data(){
     return{
+      roleId:null,
       roleObject:{
         name:'',
         surname:'',
         password:null,
         email:null,
-        roleId:null,
       },
       roles:[
        {
@@ -59,7 +59,8 @@ export default{
         surname:this.roleObject.surname,
         email:this.roleObject.email,
         password:this.roleObject.password,
-        roleId:this.roleObject.roleId
+        roleId:this.roleId,
+        department:parseInt(localStorage.getItem('department'))
       }
       this.$store.dispatch('register', body);
     }
