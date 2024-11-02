@@ -114,7 +114,7 @@
       <!-- Active Internships Section -->
       <v-col cols="12" md="8">
         <v-card color="primary" class="elevation-3 white--text">
-          <v-card-title>News For CST Department</v-card-title>
+          <v-card-title>News For {{user.departmentName}}</v-card-title>
           <v-data-table
               :items="newsData"
               :headers="newsHeaders"
@@ -193,7 +193,8 @@ export default {
     await this.getUsers();
     await this.getCourses();
     await this.getNews();
-    console.log('adsidjas' , this.user);
+    console.log('user' , this.user);
+
 
   },
   components: {
@@ -259,15 +260,19 @@ export default {
   },
   methods: {
     getNews(){
-      this.$store.dispatch('getNews');
+      this.$store.dispatch('getNews').then(res=>{
+        console.log('NEWSSS :  ' , this.newsData);
+      });
     },
     addNews(){
       const body={
         title:this.news.title,
         content:this.news.content,
         author:this.user.name,
-        publication_date:this.date
+        publication_date:this.date,
+        department:this.user.department,
       };
+      console.log('body : ' , body);
       this.$store.dispatch('createNews',body).then(res=>{
         this.news.title = '';
         this.news.content = '';

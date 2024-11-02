@@ -11,7 +11,7 @@ export default new Vuex.Store({
     token: null, // To store the authentication token
     isAuthenticated: false, // To track the authentication status
     internships:[],
-    users:null,
+    users:[],
     courses:[],
     myCourses:[],
     students:[],
@@ -19,6 +19,7 @@ export default new Vuex.Store({
     companies:[],
     professorInvitations:[],
     news:[],
+    myUsers:[],
   },
   getters: {
     isAuthenticated: state => state.isAuthenticated,
@@ -44,6 +45,9 @@ export default new Vuex.Store({
     GET_USERS(state, payload) {
       state.users = payload.data
     },
+    ADMIN_CRATED_USERS(state, payload) {
+        state.myUsers = payload.data.filter(user => user.userCreatedBy === state.user.id)
+    },
     GET_COURSES(state, payload) {
       state.courses = payload.data
     },
@@ -58,10 +62,9 @@ export default new Vuex.Store({
     },
     GET_COMPANIES(state, payload) {
       state.companies = payload.data.filter(company => company.department === state.user.department);
-      console.log('Filtered Companies: ', state.companies);
     },
     GET_NEWS(state,payload){
-        state.news = payload.data
+        state.news = payload.data.filter(news =>news.department === state.user.department);
     },
     GET_PROFESSOR_INVITATIONS(state,payload){
       state.professorInvitations = payload.data.students
@@ -157,6 +160,7 @@ export default new Vuex.Store({
     async getUsers({ commit }) {
       const response = await axios.get(`http://localhost:8000/api/user/getUsers`);
       commit('GET_USERS', response);
+      commit('ADMIN_CRATED_USERS', response);
       return response;
     },
     //course

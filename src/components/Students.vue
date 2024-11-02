@@ -63,7 +63,7 @@
       <!-- Active Internships Section -->
       <v-col cols="12" md="8">
         <v-card color="primary" class="elevation-3 white--text">
-          <v-card-title>My Students</v-card-title>
+          <v-card-title>Students That Joined Courses</v-card-title>
           <v-data-table
               :items="students"
               :headers="studentHeaders"
@@ -112,27 +112,27 @@
                 </td>
 
                 <td  class="text-left px-0 mx-0">
-                  <div :style="index !== item.courses.length - 1 ? 'border-bottom:1px solid #D6D6D6' : ''" v-for="(coursesDetails, index) in item.courses">
+                  <div class="ml-5" :style="index !== item.courses.length - 1 ? 'border-bottom:1px solid #D6D6D6' : ''" v-for="(coursesDetails, index) in item.courses">
                     <div>
                       {{coursesDetails.description}}
                     </div>
                   </div>
                 </td>
 
-                <td  class="text-left px-0 mx-0">
-                  <div  :style="index !== item.courses.length - 1 ? 'border-bottom:1px solid #D6D6D6' : ''" v-for="(coursesDetails, index) in item.courses">
-                    <div>
-                      {{coursesDetails.start_date}}
-                    </div>
-                  </div>
-                </td>
-                <td class="text-left px-0 mx-0" >
-                  <div  :style="index !== item.courses.length - 1 ? 'border-bottom:1px solid #D6D6D6' : ''" v-for="(coursesDetails, index) in item.courses">
-                    <div>
-                      {{coursesDetails.end_date}}
-                    </div>
-                  </div>
-                </td>
+<!--                <td  class="text-left px-0 mx-0">-->
+<!--                  <div  :style="index !== item.courses.length - 1 ? 'border-bottom:1px solid #D6D6D6' : ''" v-for="(coursesDetails, index) in item.courses">-->
+<!--                    <div>-->
+<!--                      {{coursesDetails.start_date}}-->
+<!--                    </div>-->
+<!--                  </div>-->
+<!--                </td>-->
+<!--                <td class="text-left px-0 mx-0" >-->
+<!--                  <div  :style="index !== item.courses.length - 1 ? 'border-bottom:1px solid #D6D6D6' : ''" v-for="(coursesDetails, index) in item.courses">-->
+<!--                    <div>-->
+<!--                      {{coursesDetails.end_date}}-->
+<!--                    </div>-->
+<!--                  </div>-->
+<!--                </td>-->
               </tr>
             </template>
           </v-data-table>
@@ -280,9 +280,9 @@ export default {
         {text: "Name", value: "name"},
         {text: "Surname", value: 'surname'},
         {text: "Course Title", value: "title"},
-        {text: "Course Description", value: 'description'},
-        {text: "Start Date", value: "start_date"},
-        {text: "End Date", value: "end_date"},
+        {text: "Course Description", value: 'description' , align:'start'},
+        // {text: "Start Date", value: "start_date"},
+        // {text: "End Date", value: "end_date"},
       ],
       MyHeaders: [
         {text: "Course Name", value: "name"},

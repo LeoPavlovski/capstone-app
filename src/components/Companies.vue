@@ -132,13 +132,13 @@
             </template>
 
             <template v-slot:item.companySize="{ item }">
-              <v-icon color="primary">mdi-account-group</v-icon>
+              <v-icon color="primary" class="mr-2">mdi-account-group</v-icon>
               {{ (item.companySize) }}
             </template>
 
             <template v-slot:item.industry="{ item }">
               <div class="d-flex align-center">
-                <v-icon color="orange">mdi-factory</v-icon>
+                <v-icon class="mr-2" color="orange">mdi-factory</v-icon>
                 {{ (item.industry) }}
               </div>
 
@@ -146,42 +146,42 @@
 
             <template v-slot:item.contactPersonName="{ item }">
               <div class="d-flex align-center">
-              <v-icon color="green">mdi-account-circle</v-icon>
+              <v-icon class="mr-2" color="green">mdi-account-circle</v-icon>
               {{ item.contactPersonName }}
               </div>
             </template>
 
             <template v-slot:item.contactPersonEmail="{ item }">
               <div class="d-flex align-center">
-              <v-icon color="blue">mdi-email</v-icon>
+              <v-icon class="mr-2" color="blue">mdi-email</v-icon>
               {{ item.contactPersonEmail }}
               </div>
             </template>
 
             <template v-slot:item.contactPersonPhone="{ item }">
               <div class="d-flex align-center">
-              <v-icon color="purple">mdi-phone</v-icon>
+              <v-icon color="purple" class="mr-2">mdi-phone</v-icon>
               {{ item.contactPersonPhone }}
               </div>
             </template>
 
             <template v-slot:item.companyWebsite="{ item }">
               <div class="d-flex align-center">
-              <v-icon color="teal">mdi-web</v-icon>
+              <v-icon color="teal" class="mr-2">mdi-web</v-icon>
               <a :href="item.companyWebsite" target="_blank">{{ item.companyWebsite }}</a>
               </div>
             </template>
 
             <template v-slot:item.linkedin="{ item }">
               <div class="d-flex align-center">
-              <v-icon color="blue">mdi-linkedin</v-icon>
+              <v-icon color="blue" class="mr-2">mdi-linkedin</v-icon>
               <a :href="item.linkedin" target="_blank">{{ item.linkedin || 'N/A' }}</a>
               </div>
             </template>
 
             <template v-slot:item.twitter="{ item }">
               <div class="d-flex align-center">
-              <v-icon color="cyan">mdi-twitter</v-icon>
+              <v-icon color="cyan" class="mr-2">mdi-twitter</v-icon>
               <a :href="item.twitter" target="_blank">{{ item.twitter || 'N/A' }}</a>
               </div>
             </template>
@@ -213,13 +213,13 @@
             </template>
 
             <template v-slot:item.companySize="{ item }">
-              <v-icon color="primary">mdi-account-group</v-icon>
+              <v-icon class="mr-2" color="primary">mdi-account-group</v-icon>
               {{ (item.companySize) }}
             </template>
 
             <template v-slot:item.industry="{ item }">
               <div class="d-flex align-center">
-                <v-icon color="orange">mdi-factory</v-icon>
+                <v-icon color="orange" class="mr-2">mdi-factory</v-icon>
                 {{ (item.industry) }}
               </div>
 
@@ -227,42 +227,42 @@
 
             <template v-slot:item.contactPersonName="{ item }">
               <div class="d-flex align-center">
-                <v-icon color="green">mdi-account-circle</v-icon>
+                <v-icon class="mr-2" color="green">mdi-account-circle</v-icon>
                 {{ item.contactPersonName }}
               </div>
             </template>
 
             <template v-slot:item.contactPersonEmail="{ item }">
               <div class="d-flex align-center">
-                <v-icon color="blue">mdi-email</v-icon>
+                <v-icon class="mr-2" color="blue">mdi-email</v-icon>
                 {{ item.contactPersonEmail }}
               </div>
             </template>
 
             <template v-slot:item.contactPersonPhone="{ item }">
               <div class="d-flex align-center">
-                <v-icon color="purple">mdi-phone</v-icon>
+                <v-icon color="purple" class="mr-2">mdi-phone</v-icon>
                 {{ item.contactPersonPhone }}
               </div>
             </template>
 
             <template v-slot:item.companyWebsite="{ item }">
               <div class="d-flex align-center">
-                <v-icon color="teal">mdi-web</v-icon>
+                <v-icon color="teal" class="mr-2">mdi-web</v-icon>
                 <a :href="item.companyWebsite" target="_blank">{{ item.companyWebsite }}</a>
               </div>
             </template>
 
             <template v-slot:item.linkedin="{ item }">
               <div class="d-flex align-center">
-                <v-icon color="blue">mdi-linkedin</v-icon>
+                <v-icon color="blue" class="mr-2">mdi-linkedin</v-icon>
                 <a :href="item.linkedin" target="_blank">{{ item.linkedin || 'N/A' }}</a>
               </div>
             </template>
 
             <template v-slot:item.twitter="{ item }">
               <div class="d-flex align-center">
-                <v-icon color="cyan">mdi-twitter</v-icon>
+                <v-icon class="mr-2" color="cyan">mdi-twitter</v-icon>
                 <a :href="item.twitter" target="_blank">{{ item.twitter || 'N/A' }}</a>
               </div>
             </template>
