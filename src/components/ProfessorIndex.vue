@@ -24,10 +24,10 @@
 <!--            </v-expansion-panels>-->
             <div v-for="item in news" :key="item.id">
               <v-card class="elevation-4 flex-column d-flex text-left pa-2">
-                <span class="font-weight-medium" style="font-size:18px">Title :{{item.title}}</span>
-                <span style="font-size:16px">Publication Date :{{ new Date(item.publication_date).toLocaleDateString() }}</span>
-                <span style="font-size:16px">Author : {{item.author}}</span>
-                <span style="font-size:16px">Description :{{item.content}}</span>
+                <span class="font-weight-medium" style="font-size:18px">Title: {{item.title}}</span>
+                <span style="font-size:16px">Publication Date: {{ new Date(item.publication_date).toLocaleDateString() }}</span>
+                <span style="font-size:16px">Author: {{item.author}}</span>
+                <span style="font-size:16px">Description: {{item.content}}</span>
               </v-card>
             </div>
           </v-card>
@@ -171,7 +171,6 @@ export default {
     await this.getCourses();
     await this.getCompanies();
     await this.getNews();
-    console.log('Companies  : ' , this.companies);
     },
   components: {
     Navigation,

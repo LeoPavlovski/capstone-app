@@ -187,7 +187,6 @@ export default {
         if(this.user.roleId === 3){
           this.$router.push('/companies');
         }
-        console.log('user: ' , this.user);
         localStorage.setItem('department', this.user.department);
       })
       },
@@ -215,7 +214,7 @@ export default {
       this.$store.dispatch('register',body).then(res=>{
         this.step=0;
       })
-      console.log('Body: ' , body);
+
     }
   },
   props: {

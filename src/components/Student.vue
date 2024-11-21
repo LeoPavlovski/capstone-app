@@ -298,12 +298,10 @@ export default {
       return durationInDays
     },
     leaveCourse(item){
-      console.log(item);
       const body= {
         user_id:this.user.id,
         course_id:item.id,
       }
-      console.log('body : ' , body);
       this.$store.dispatch('leaveCourse',body).then(res=>{
         this.getStudentCourses();
       });

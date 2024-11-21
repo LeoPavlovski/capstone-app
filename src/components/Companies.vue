@@ -290,8 +290,6 @@ export default {
   mounted() {
     //this.getUsers();
     this.getCompanies();
-    console.log('User new : ' , this.user);
-    console.log('Companies  : ', this.companies);
 
     //this.getInternships();
   },
@@ -442,7 +440,6 @@ export default {
         user_id:this.user.id,
         department:this.user.department
       };
-      console.log('Depr : ' , body);
       this.$store.dispatch('addCompany', body).then(res=>{
         this.getCompanies();
         //

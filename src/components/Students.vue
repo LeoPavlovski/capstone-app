@@ -43,6 +43,8 @@
                 item-value="id"
                 label="Select An Internship"
                 v-model="internshipId"
+                :menu-props="{ offsetY: true }"
+
             ></v-select>
             <v-select
                 v-if="formattedStudents.length"
@@ -51,6 +53,7 @@
                 item-value="id"
                 label="Select A User"
                 v-model="studentId"
+                :menu-props="{ offsetY: true }"
             >
             </v-select>
             <!-- You can add more fields as needed -->
@@ -311,13 +314,11 @@ export default {
       }
       this.$store.dispatch('getProfessorInvitations', body)
           .then(res => {
-            console.log('Res: ', res);
             this.snackbarMessage = 'Invitations Generated.';
             this.snackbarColor = 'success';
             this.snackbar = true;
           })
           .catch(err => {
-            console.log('This is the error : ', err);
             this.snackbarMessage = err.response.data.message;
             this.snackbarColor = 'error';
             this.snackbar = true;
@@ -340,10 +341,11 @@ export default {
 
       this.$store.dispatch('invite', body)
           .then(res => {
-            console.log('Res: ', res);
             this.snackbarMessage = 'Student invited successfully!';
             this.snackbarColor = 'success';
             this.snackbar = true;
+            this.internshipId =null;
+            this.studentId = null;
           })
           .catch(err => {
             this.snackbarMessage = err.message;

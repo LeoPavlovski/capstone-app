@@ -193,9 +193,6 @@ export default {
     await this.getUsers();
     await this.getCourses();
     await this.getNews();
-    console.log('user' , this.user);
-
-
   },
   components: {
     Navigation,
@@ -272,7 +269,6 @@ export default {
         publication_date:this.date,
         department:this.user.department,
       };
-      console.log('body : ' , body);
       this.$store.dispatch('createNews',body).then(res=>{
         this.news.title = '';
         this.news.content = '';

@@ -1,6 +1,6 @@
 <template>
   <div class="d-flex">
-    <Navigation class="w-100 w-md-25"></Navigation>
+    <Navigation class="w-100 w-md-25" />
 
     <v-row class="mx-2" justify="center">
       <!-- Left column for the Create User card -->
@@ -33,11 +33,14 @@
       <v-col cols="6" class="mt-16">
         <v-card color="primary" elevation="3" width="100%">
           <v-card-title class="white--text">Users Created</v-card-title>
-          <v-card elevation="2" class="pa-5 overflow-auto" max-height="510" min-height="510">
-            <v-data-table :items="myUsers">
+          <v-card elevation="2" class="pa-5 overflow-auto">
+            <v-data-table sort-by="id" :items="myUsers" :items-per-page="-1"  hide-default-footer height="470" class="overflow-auto">
               <template v-slot:item="{ item }">
-                <tr>
-                  <td>{{ item }}</td>
+                <tr v-if="item.userCreatedBy === user.id">
+                  <td>{{ item?.name }}</td>
+                  <td>{{ item?.surname }}</td>
+                  <td>{{ item?.roleId === 2 ? 'Professor' : 'Student' }}</td>
+                  <td>{{ item?.email }}</td>
                 </tr>
               </template>
             </v-data-table>
@@ -79,8 +82,6 @@ export default{
   },
   mounted(){
     this.$store.dispatch('getUsers').then(res=>{
-      console.log('USERS :', this.users);
-      console.log('myUsers : ' , this.myUsers);
     });
     // console.log('user : ' , this.user);
 
@@ -104,7 +105,9 @@ export default{
       console.log('body : ' , body);
       this.$store.dispatch('register', body).then(res => {
         this.userCreated=true;
-        this.$store.dispatch('getUsers');
+        this.$store.dispatch('getUsers').then(res=>{
+          window.location.reload();
+        });
         this.roleObject.name = '';
         this.roleObject.email='';
         this.roleObject.surname= '';

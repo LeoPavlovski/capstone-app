@@ -27,7 +27,6 @@ export default new Vuex.Store({
   },
   mutations: {
     SET_USER(state, user) {
-      console.log('User from set_user '  , user);
       state.user = user;
     },
     SET_TOKEN(state, token) {
@@ -46,7 +45,7 @@ export default new Vuex.Store({
       state.users = payload.data
     },
     ADMIN_CRATED_USERS(state, payload) {
-        state.myUsers = payload.data.filter(user => user.userCreatedBy === state.user.id)
+     state.myUsers = payload.data
     },
     GET_COURSES(state, payload) {
       state.courses = payload.data
