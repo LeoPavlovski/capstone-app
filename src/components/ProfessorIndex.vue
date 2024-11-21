@@ -117,44 +117,49 @@
       </v-col>
       <v-col cols="12" md="12">
         <v-card class="px-0" color="primary">
-          <v-card-title class="white--text">Today's Courses</v-card-title>
-          <v-card class="pa-5 overflow-auto" elevation="1" height="270" min-height="270">
-          <v-card-text >
-              <v-row>
-                <v-col
-                    v-for="course in getTodayCourses"
-                    :key="course.id"
-                    cols="3"
-                >
-                  <v-card class="mb-2" elevation="10" height="200">
-                    <v-card-title class="font-weight-medium" style="font-size:16px; text-decoration:underline">
-                      {{ course.name }}
-                    </v-card-title>
-                    <div class="d-flex mx-3">
-                        <v-chip small color="orange" text-color="white">
-                          <v-icon small left>mdi-calendar-today</v-icon>
-                          {{ course.start_date }}
-                        </v-chip>
-                        <v-chip small color="red" text-color="white" class="ml-2">
-                          <v-icon  small left>mdi-calendar-clock</v-icon>
-                          {{ course.end_date }}
-                        </v-chip>
-                    </div>
-                    <v-card-text>
-                      <div class="d-flex align-center">
-                          <v-icon small color="purple">mdi-google-maps</v-icon>
-                        {{ course.location }}
-                      </div>
-                      <div class="d-flex align-center my-2">
-                        <v-icon small  color="orange">mdi-clock</v-icon>
-                        {{ course.time }}
-                      </div>
-                    </v-card-text>
-                  </v-card>
-                </v-col>
-              </v-row>
-          </v-card-text>
-        </v-card>
+          <v-card-title class="white--text">Student's Joined Internships...</v-card-title>
+          <v-data-table :items="joinedStudents">
+          <template v-slot:item="{item}">
+            {{item}}
+          </template>
+          </v-data-table>
+<!--          <v-card class="pa-5 overflow-auto" elevation="1" height="270" min-height="270">-->
+<!--          <v-card-text >-->
+<!--              <v-row>-->
+<!--                <v-col-->
+<!--                    v-for="course in getTodayCourses"-->
+<!--                    :key="course.id"-->
+<!--                    cols="3"-->
+<!--                >-->
+<!--                  <v-card class="mb-2" elevation="10" height="200">-->
+<!--                    <v-card-title class="font-weight-medium" style="font-size:16px; text-decoration:underline">-->
+<!--                      {{ course.name }}-->
+<!--                    </v-card-title>-->
+<!--                    <div class="d-flex mx-3">-->
+<!--                        <v-chip small color="orange" text-color="white">-->
+<!--                          <v-icon small left>mdi-calendar-today</v-icon>-->
+<!--                          {{ course.start_date }}-->
+<!--                        </v-chip>-->
+<!--                        <v-chip small color="red" text-color="white" class="ml-2">-->
+<!--                          <v-icon  small left>mdi-calendar-clock</v-icon>-->
+<!--                          {{ course.end_date }}-->
+<!--                        </v-chip>-->
+<!--                    </div>-->
+<!--                    <v-card-text>-->
+<!--                      <div class="d-flex align-center">-->
+<!--                          <v-icon small color="purple">mdi-google-maps</v-icon>-->
+<!--                        {{ course.location }}-->
+<!--                      </div>-->
+<!--                      <div class="d-flex align-center my-2">-->
+<!--                        <v-icon small  color="orange">mdi-clock</v-icon>-->
+<!--                        {{ course.time }}-->
+<!--                      </div>-->
+<!--                    </v-card-text>-->
+<!--                  </v-card>-->
+<!--                </v-col>-->
+<!--              </v-row>-->
+<!--          </v-card-text>-->
+<!--        </v-card>-->
         </v-card>
       </v-col>
     </v-row>
@@ -171,6 +176,7 @@ export default {
     await this.getCourses();
     await this.getCompanies();
     await this.getNews();
+    await this.$store.dispatch('getJoinedStudents');
     },
   components: {
     Navigation,
@@ -180,7 +186,8 @@ export default {
       user: state => state.user,
       courses: state => state.courses,
       companies:state=>state.companies,
-      news:state=>state.news
+      news:state=>state.news,
+      joinedStudents:state=>state.joinedStudents
     }),
     getMyCourses(){
       const myCourses  = this.courses.filter(course =>course.user_id === this.user.id);

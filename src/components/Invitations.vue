@@ -37,6 +37,7 @@
             <v-data-table height="350" :headers="myHeaders" :items="invitations.invitations">
               <template v-slot:item="{item}">
                 <tr v-if="item.status !== 'pending'">
+                  <td class="text-left">{{item.internship_id}}</td>
                   <td class="text-left">{{item.internship.name}}</td>
                   <td class="text-left">{{item.internship.description}}</td>
                   <td  class="text-left">{{item.internship.company}}</td>
@@ -56,7 +57,7 @@
             </v-data-table>
           </v-card>
         </v-col>
-        <v-col cols="12" md="12">
+        <v-col cols="6" md="6">
           <v-card color="primary" class="elevation-3 white--text">
             <v-card-title>News For CST Department</v-card-title>
             <v-data-table
@@ -87,6 +88,28 @@
             </v-data-table>
           </v-card>
         </v-col>
+        <v-col cols="6" md="6">
+          <v-card color="primary" elevation="3" width="100%">
+            <v-card-title class="white--text">Apply For Internship</v-card-title>
+<!--
+           Sending the internship id , and the userId . -->
+            <v-card class="px-2">
+              <v-select
+                  :items="internships"
+                  item-text="name"
+                  item-value="id"
+                  label="Select An Internship"
+                  v-model="internshipId"
+                  :menu-props="{ offsetY: true }"
+
+              ></v-select>
+
+              <v-btn @click="joinInternship">Join</v-btn>
+            </v-card>
+          </v-card>
+
+
+        </v-col>
       </v-row>
     </div>
   </div>
@@ -101,6 +124,8 @@ export default {
   async mounted() {
     await this.getUsers();
     await this.getNews();
+    await this.getInternships();
+    console.log('Internships : ' , this.invitations);
   },
   components: {
     Navigation,
@@ -110,11 +135,17 @@ export default {
       user: state => state.user,
       invitations :state=>state.invitations,
       newsData:state=>state.news,
+      internships: state => state.internships,
     }),
+    // getUserInternships() {
+    //   const invitedIds = this.invitations.invitations.map(invitation => invitation.internship_id);
+    //   return this.internships.filter(internship => !invitedIds.includes(internship.id));
+    // }
   },
   data() {
     return {
       loading:false,
+      internshipId:null,
       newsHeaders: [
         { text: "Title", value: "title" },
         { text: "Content", value: "content" },
@@ -136,6 +167,17 @@ export default {
     };
   },
   methods: {
+    joinInternship(){
+      const body={
+        internship_id:this.internshipId,
+        user_id:this.user.id,
+      }
+      this.$store.dispatch('joinInternship',body);
+    },
+    getInternships() {
+      this.$store.dispatch('getInternships').then(res => {
+      });
+    },
     getNews(){
       this.$store.dispatch('getNews');
     },

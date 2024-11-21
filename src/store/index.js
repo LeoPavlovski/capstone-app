@@ -20,6 +20,7 @@ export default new Vuex.Store({
     professorInvitations:[],
     news:[],
     myUsers:[],
+    joinedStudents:[],
   },
   getters: {
     isAuthenticated: state => state.isAuthenticated,
@@ -40,6 +41,9 @@ export default new Vuex.Store({
     },
     GET_INTERNSHIPS(state, payload) {
       state.internships = payload.data
+    },
+    GET_JOINED_STUDENTS(state,payload){
+      state.joinedStudents = payload.data;
     },
     GET_USERS(state, payload) {
       state.users = payload.data
@@ -290,7 +294,16 @@ export default new Vuex.Store({
       const response = await axios.post(`http://localhost:8000/api/leave-course`, body);
       return response;
     },
-
+    //student joins internship
+    async joinInternship({ commit } , body) {
+      const response = await axios.post(`http://localhost:8000/api/internships/${body.internship_id}/join`, body);
+      return response;
+    },
+    async getJoinedStudents({ commit } , body) {
+      const response = await axios.get(`http://localhost:8000/api/users/internships` , body);
+      commit('GET_JOINED_STUDENTS', response);
+      return response;
+    },
 
   },
   modules: {
