@@ -3,6 +3,9 @@
     <div class="d-flex">
       <Navigation class="w-100 w-md-25"></Navigation>
       <v-row class="text-center pa-5">
+        <v-snackbar v-model="snackbar" :color="snackbarColor" timeout="3000">
+          {{ snackbarMessage }}
+        </v-snackbar>
         <v-col cols="12" md="6">
           <v-card color="primary white--text">
             <v-card-title>Your Internship Invitations </v-card-title>
@@ -93,8 +96,10 @@
             <v-card-title class="white--text">Apply For Internship</v-card-title>
 <!--
            Sending the internship id , and the userId . -->
-            <v-card class="px-2">
+            <v-card class="px-2" :height="310">
               <v-select
+                  outlined
+                  class="pt-2"
                   :items="getUserInternships"
                   item-text="name"
                   item-value="id"
@@ -103,8 +108,10 @@
                   :menu-props="{ offsetY: true }"
 
               ></v-select>
+            <div class="d-flex justify-center">
+              <v-btn color="primary" width="200px" :disabled="internshipId === null" @click="joinInternship">Join</v-btn>
+            </div>
 
-              <v-btn @click="joinInternship">Join</v-btn>
             </v-card>
           </v-card>
 
@@ -138,7 +145,7 @@ export default {
       internships: state => state.internships,
     }),
     getUserInternships() {
-      const invitedIds = this.invitations.invitations.map(invitation => invitation.internship_id);
+      const invitedIds = (this.invitations?.invitations || []).map(invitation => invitation.internship_id);
       return this.internships.filter(internship => !invitedIds.includes(internship.id));
     }
   },
@@ -146,6 +153,9 @@ export default {
     return {
       loading:false,
       internshipId:null,
+      snackbarMessage :'',
+      snackbarColor:null,
+      snackbar:false,
       newsHeaders: [
         { text: "Title", value: "title" },
         { text: "Content", value: "content" },
@@ -167,12 +177,33 @@ export default {
     };
   },
   methods: {
-    joinInternship(){
-      const body={
-        internship_id:this.internshipId,
-        user_id:this.user.id,
-      }
-      this.$store.dispatch('joinInternship',body);
+    joinInternship() {
+      const body = {
+        internship_id: this.internshipId,
+        user_id: this.user.id,
+      };
+
+          this.$store.dispatch('joinInternship', body).then(res=>{
+            this.snackbarMessage = res
+            this.snackbarColor = 'green';
+            this.snackbar= true;
+          })
+          .catch((error) => {
+            // Check if the error has a response and a message
+            if (error.response && error.response.data && error.response.data.message) {
+              console.error('Error Message:', error.response.data.message); // Logs the error message
+              // You can display the message in your component, e.g.:
+              this.snackbarMessage = error.response.data.message;
+              this.snackbarColor = 'red';
+              this.snackbar= true;
+            } else {
+              console.error('Unexpected Error:', error.message);
+              this.snackbarMessage = error.message;
+              this.snackbarColor = 'red';
+              this.snackbar= true;
+            }
+          });
+
     },
     getInternships() {
       this.$store.dispatch('getInternships').then(res => {

@@ -302,6 +302,7 @@ export default new Vuex.Store({
     //student joins internship
     async joinInternship({ commit } , body) {
       const response = await axios.post(`http://localhost:8000/api/internships/${body.internship_id}/join`, body);
+      console.log('response : ', response);
       return response;
     },
     async getJoinedStudents({ commit } , body) {

@@ -1,0 +1,2 @@
+1. Display the Message when the student applied for the invitation. ❌
+2. Solve the map issue when the user joins an internship. ✅
