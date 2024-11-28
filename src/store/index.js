@@ -258,6 +258,11 @@ export default new Vuex.Store({
       return response;
     },
 
+    async editCompany({ commit } , body) {
+      const response = await axios.put(`http://localhost:8000/api/companies/${body.id}`, body);
+      return response;
+    },
+
     //Get Professor invitiations.
 
     async getProfessorInvitations({ commit } , body) {

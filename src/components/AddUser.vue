@@ -34,7 +34,7 @@
         <v-card color="primary" elevation="3" width="100%">
           <v-card-title class="white--text">Users Created</v-card-title>
           <v-card elevation="2" class="pa-5 overflow-auto">
-            <v-data-table sort-by="id" :items="myUsers" :items-per-page="-1"  hide-default-footer height="470" class="overflow-auto">
+            <v-data-table sort-by="id" fixed-header :headers="headers" :items="myUsers" :items-per-page="-1"  hide-default-footer height="470" class="overflow-auto">
               <template v-slot:item="{ item }">
                 <tr v-if="item.userCreatedBy === user.id">
                   <td>{{ item?.name }}</td>
@@ -60,6 +60,12 @@ export default{
   components: {Navigation},
   data(){
     return{
+      headers:[
+        { text: "Name", value: "name" },
+        { text: "Surname", value: "surname" },
+        { text: "Role Name", value: "role" },
+        { text: "Email", value: "email" },
+      ],
       roleId:null,
       userCreated:false,
       roleObject:{

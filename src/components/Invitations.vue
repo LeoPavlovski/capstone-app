@@ -95,7 +95,7 @@
            Sending the internship id , and the userId . -->
             <v-card class="px-2">
               <v-select
-                  :items="internships"
+                  :items="getUserInternships"
                   item-text="name"
                   item-value="id"
                   label="Select An Internship"
@@ -137,10 +137,10 @@ export default {
       newsData:state=>state.news,
       internships: state => state.internships,
     }),
-    // getUserInternships() {
-    //   const invitedIds = this.invitations.invitations.map(invitation => invitation.internship_id);
-    //   return this.internships.filter(internship => !invitedIds.includes(internship.id));
-    // }
+    getUserInternships() {
+      const invitedIds = this.invitations.invitations.map(invitation => invitation.internship_id);
+      return this.internships.filter(internship => !invitedIds.includes(internship.id));
+    }
   },
   data() {
     return {

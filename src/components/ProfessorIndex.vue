@@ -23,7 +23,7 @@
 <!--              </v-expansion-panel>-->
 <!--            </v-expansion-panels>-->
             <div v-for="item in news" :key="item.id">
-              <v-card class="elevation-4 flex-column d-flex text-left pa-2">
+              <v-card class="elevation-4 flex-column d-flex text-left pa-2 mb-2">
                 <span class="font-weight-medium" style="font-size:18px">Title: {{item.title}}</span>
                 <span style="font-size:16px">Publication Date: {{ new Date(item.publication_date).toLocaleDateString() }}</span>
                 <span style="font-size:16px">Author: {{item.author}}</span>
@@ -120,7 +120,10 @@
           <v-card-title class="white--text">Student's Joined Internships...</v-card-title>
           <v-data-table :items="joinedStudents">
           <template v-slot:item="{item}">
-            {{item}}
+            <tr class="text-left">
+              {{item.email}}
+            </tr>
+
           </template>
           </v-data-table>
 <!--          <v-card class="pa-5 overflow-auto" elevation="1" height="270" min-height="270">-->

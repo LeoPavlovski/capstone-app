@@ -490,61 +490,35 @@ export default {
     submitEdit() {
       const body = {
         id: this.editItem.id,
+        address: this.editItem.address,
+        companySize: this.editItem.companySize,
+        companyWebsite: this.editItem.companyWebsite,
+        contactPersonEmail: this.editItem.contactPersonEmail,
+        contactPersonName: this.editItem.contactPersonName,
+        contactPersonPhone: this.editItem.contactPersonPhone,
+        industry: this.editItem.industry,
+        linkedin: this.editItem.linkedin,
         name: this.editItem.name,
-        company: this.editItem.company,
-        start_date: this.editItem.start_date,
-        end_date: this.editItem.end_date,
-        location: this.editItem.location,
-        duration: this.editItem.duration,
-        stipend: this.editItem.stipend,
-        deadline: this.editItem.deadline,
-        description: this.editItem.description
+        twitter: this.editItem.twitter,
       };
-      this.$store.dispatch('updateInternship', body).then(res => {
-        this.getInternships();
+      this.$store.dispatch('editCompany', body).then(res => {
+        // this.getInternships();
+        this.getCompanies();
         this.dialog = false;
-      });
-    },
-    addInternship() {
-      const body = {
-        user_id: this.user.id,
-        name: this.intershipForm.name,
-        company: this.intershipForm.company,
-        start_date: this.intershipForm.start_date,
-        end_date: this.intershipForm.end_date,
-        location: this.intershipForm.location,
-        duration: this.intershipForm.duration,
-        stipend: this.intershipForm.stipend,
-        deadline: this.intershipForm.deadline,
-        description: this.intershipForm.description
-      };
-      this.$store.dispatch('addInternship', body).then(res => {
-        this.intershipForm = {
-          name: '',
-          company: '',
-          start_date: '',
-          end_date: '',
-          location: '',
-          duration: '',
-          stipend: '',
-          deadline: '',
-          description: ''
-        };
-        this.getInternships();
       });
     },
     openDialog(item) {
       this.editItem = { ...item };
       this.dialog = true;
     },
-    deleteInternship(item) {
-      const body = {
-        id: item.id
-      };
-      this.$store.dispatch('deleteInternship', body.id).then(res => {
-        this.getInternships();
-      });
-    },
+    // deleteInternship(item) {
+    //   const body = {
+    //     id: item.id
+    //   };
+    //   this.$store.dispatch('deleteInternship', body.id).then(res => {
+    //     this.getInternships();
+    //   });
+    // },
   },
 };
 </script>

@@ -8,7 +8,7 @@
         <v-text-field dense outlined label="Start Date" type="date" v-model="editItem.start_date"></v-text-field>
         <v-text-field dense outlined label="End Date" type="date" v-model="editItem.end_date"></v-text-field>
         <v-text-field dense outlined label="Location" v-model="editItem.location"></v-text-field>
-        <v-text-field  dense outlined label="Enter Company" v-model="editItem.company"></v-text-field>
+        <v-select dense v-model="editItem.company" item-text="name" item-value="id" outlined label="Company" :items="companies"></v-select>
         <v-select :items="stipendOptions" item-text="name" item-value="id" v-model="editItem.stipend" dense outlined label="Scholarship (optional)"></v-select>
         <v-text-field dense outlined label="Application Deadline" type="date" v-model="editItem.deadline"></v-text-field>
         <v-btn color="primary" class="mt-4" width="100%" @click="submitEdit">Submit</v-btn>
@@ -46,6 +46,7 @@
               :loading="loading"
               loading-text="loading..."
           >
+
 
             <template v-slot:item.created="{item}">
               {{item.firstName}} {{item.lastName}}
@@ -129,6 +130,7 @@ export default {
     this.getUsers();
     this.getInternships();
     this.getCompanies();
+    console.log('comp anies : ,', this.companies);
   },
   components: {
     Navigation,
@@ -142,13 +144,21 @@ export default {
     }),
     // Computed property to merge user data into internships
     enrichedInternships() {
+      console.log('Internships, ', this.internships);
+      console.log('Companies, ', this.companies);
+
       return this.internships.map(internship => {
         const user = this.users.find(user => user.id === internship.user_id);
+        const company = this.companies.find(company => company.id === internship.company);
+
+        console.log('Company : ' , company);
+
         return {
           ...internship,
           firstName: user ? user.name : '',
           lastName: user ? user.surname : '',
-          userEmail: user ? user.email : ''
+          userEmail: user ? user.email : '',
+          companyName: company ? company.name : '', // Add the company name
         };
       });
     },
@@ -180,7 +190,7 @@ export default {
       internshipHeaders: [
         { text: "Created", value: "created" },
         { text: "Internship", value: "name" },
-        { text: "Company", value: "company" },
+        { text: "Company", value: "companyName" },
         { text: "Location", value: "location" },
         { text: "Duration", value: "duration" },
         { text: "Scholarship", value: "stipend" },
@@ -269,6 +279,7 @@ export default {
           deadline: '',
           description: ''
         };
+        this.companyItem = null
         this.getInternships();
       });
     },
