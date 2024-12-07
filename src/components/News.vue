@@ -153,7 +153,7 @@
               item-key="id"
               class="elevation-2"
               fixed-header
-              height="120"
+              height="180"
               :loading="loading"
               loading-text="loading..."
           >
