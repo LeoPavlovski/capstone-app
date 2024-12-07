@@ -132,13 +132,11 @@
             </template>
 
             <template v-slot:item.companySize="{ item }">
-              <v-icon color="primary" class="mr-2">mdi-account-group</v-icon>
-              {{ (item.companySize) }}
+              {{ getCompanySize(item) }}
             </template>
 
             <template v-slot:item.industry="{ item }">
               <div class="d-flex align-center">
-                <v-icon class="mr-2" color="orange">mdi-factory</v-icon>
                 {{ (item.industry) }}
               </div>
 
@@ -146,21 +144,18 @@
 
             <template v-slot:item.contactPersonName="{ item }">
               <div class="d-flex align-center">
-              <v-icon class="mr-2" color="green">mdi-account-circle</v-icon>
               {{ item.contactPersonName }}
               </div>
             </template>
 
             <template v-slot:item.contactPersonEmail="{ item }">
               <div class="d-flex align-center">
-              <v-icon class="mr-2" color="blue">mdi-email</v-icon>
               {{ item.contactPersonEmail }}
               </div>
             </template>
 
             <template v-slot:item.contactPersonPhone="{ item }">
               <div class="d-flex align-center">
-              <v-icon color="purple" class="mr-2">mdi-phone</v-icon>
               {{ item.contactPersonPhone }}
               </div>
             </template>
@@ -213,13 +208,11 @@
             </template>
 
             <template v-slot:item.companySize="{ item }">
-              <v-icon class="mr-2" color="primary">mdi-account-group</v-icon>
-              {{ (item.companySize) }}
+              {{ getCompanySize(item) }}
             </template>
 
             <template v-slot:item.industry="{ item }">
               <div class="d-flex align-center">
-                <v-icon color="orange" class="mr-2">mdi-factory</v-icon>
                 {{ (item.industry) }}
               </div>
 
@@ -227,21 +220,18 @@
 
             <template v-slot:item.contactPersonName="{ item }">
               <div class="d-flex align-center">
-                <v-icon class="mr-2" color="green">mdi-account-circle</v-icon>
                 {{ item.contactPersonName }}
               </div>
             </template>
 
             <template v-slot:item.contactPersonEmail="{ item }">
               <div class="d-flex align-center">
-                <v-icon class="mr-2" color="blue">mdi-email</v-icon>
                 {{ item.contactPersonEmail }}
               </div>
             </template>
 
             <template v-slot:item.contactPersonPhone="{ item }">
               <div class="d-flex align-center">
-                <v-icon color="purple" class="mr-2">mdi-phone</v-icon>
                 {{ item.contactPersonPhone }}
               </div>
             </template>
@@ -338,13 +328,13 @@ export default {
   data() {
     return {
       companyHeaders: [
-        { text: 'Company Name', value: 'companyName' },
-        { text: 'Company Size', value: 'companySize' },
+        { text: 'Company', value: 'companyName' },
+        { text: 'Size', value: 'companySize' },
         { text: 'Industry', value: 'industry' },
-        { text: 'Contact Person Name', value: 'contactPersonName' },
-        { text: 'Contact Person Email', value: 'contactPersonEmail' },
-        { text: 'Contact Person Phone', value: 'contactPersonPhone' },
-        { text: 'Company Website', value: 'companyWebsite' },
+        { text: 'Name', value: 'contactPersonName' },
+        { text: 'Email', value: 'contactPersonEmail' },
+        { text: 'Phone', value: 'contactPersonPhone' },
+        { text: 'Website', value: 'companyWebsite' },
         { text: 'LinkedIn', value: 'linkedin' },
         { text: 'Twitter', value: 'twitter' },
         { text: 'Actions', value: 'actions' },
@@ -425,6 +415,19 @@ export default {
     };
   },
   methods: {
+    getCompanySize(item){
+      console.log('item', item);
+      switch(item.companySize){
+        case 1:
+          return 'Small Company';
+        case 2:
+          return 'Medium Company';
+        case 3:
+          return 'Big Company';
+        case 4:
+          return 'Enterprise'
+      }
+    },
     addCompany(){
       const body = {
         companyWebsite: this.company.companyWebsite,
