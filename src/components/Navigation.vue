@@ -38,6 +38,7 @@
               :key="item.title"
               :to="item.title !== 'Logout' ? getRouteProfessor(item.title) : null"
               @click="item.title === 'Logout' ? handleLogout() : null"
+              :style="index === 4? 'position:absolute; bottom:0; left:0; width:100%;' :''"
           >
             <v-list-item-icon>
               <v-icon >{{ item.icon }}</v-icon>
@@ -54,9 +55,11 @@
               :key="item.title"
               :to="item.title !== 'Logout' ? getRouteAdmin(item.title) : null"
               @click="item.title === 'Logout' ? handleLogout() : null"
+              color="primary"
+              :style="index === 3? 'position:absolute; bottom:0; left:0; width:100%;' :''"
           >
             <v-list-item-icon>
-              <v-icon >{{ item.icon }}</v-icon>
+              <v-icon>{{ item.icon }}</v-icon>
             </v-list-item-icon>
 
             <v-list-item-content>
@@ -71,6 +74,7 @@
               :key="item.title"
               :to="item.title !== 'Logout' ? getRouteStudent(item.title) : null"
               @click="item.title === 'Logout' ? handleLogout() : null"
+              :style="index === 2? 'position:absolute; bottom:0; left:0; width:100%;' :''"
 
           >
             <v-list-item-icon class="d-flex">
