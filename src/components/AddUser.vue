@@ -23,7 +23,7 @@
             <v-text-field type="password" class="py-5" dense hide-details outlined label="Password" v-model="roleObject.password"></v-text-field>
             <v-select :menu-props="{ offsetY: true }" outlined dense hide-details label="Select Role" v-model="roleId" :items="roles" item-text="role" item-value="id"></v-select>
             <div class="d-flex align-center justify-center">
-              <v-btn width="100%" color="primary" class="my-5" @click="createUser">Create</v-btn>
+              <v-btn :disabled="!disabledUser" width="100%" color="primary" class="my-5" @click="createUser">Create</v-btn>
             </div>
           </v-card>
         </v-card>
@@ -131,7 +131,16 @@ export default{
       users: state => state.users,
       user:state=>state.user,
       myUsers:state=>state.myUsers,
-    })
+    }),
+    disabledUser(){
+      return(
+          this.roleObject.name &&
+              this.roleObject.password &&
+              this.roleObject.surname &&
+              this.roleObject.email &&
+              this.roleId
+      )
+    }
   },
   watch:{
 
