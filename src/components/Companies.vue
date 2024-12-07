@@ -27,6 +27,7 @@
             v-model="editItem.companySize"
             dense
             outlined
+            :menu-props="{ offsetY: true }"
             label="Company Size">
         </v-select>
 
@@ -36,6 +37,7 @@
             item-text="name"
             item-value="name"
             v-model="editItem.industry"
+            :menu-props="{ offsetY: true }"
             dense
             outlined
             label="Industry">

@@ -97,20 +97,23 @@
 <!--
            Sending the internship id , and the userId . -->
             <v-card class="px-2" :height="310">
-              <v-select
-                  outlined
-                  class="pt-2"
-                  :items="getUserInternships"
-                  item-text="name"
-                  item-value="id"
-                  label="Select An Internship"
-                  v-model="internshipId"
-                  :menu-props="{ offsetY: true }"
+              <v-col class="elevation-0">
+                <v-select
+                    outlined
+                    class="pt-2"
+                    :items="getUserInternships"
+                    item-text="name"
+                    item-value="id"
+                    label="Select An Internship"
+                    v-model="internshipId"
+                    :menu-props="{ offsetY: true }"
 
-              ></v-select>
-            <div class="d-flex justify-center">
-              <v-btn color="primary" width="200px" :disabled="internshipId === null" @click="joinInternship">Join</v-btn>
-            </div>
+                ></v-select>
+                <div class="d-flex justify-center">
+                  <v-btn color="primary" width="200px" :disabled="internshipId === null" @click="joinInternship">Join</v-btn>
+                </div>
+              </v-col>
+
 
             </v-card>
           </v-card>
@@ -145,6 +148,7 @@ export default {
       internships: state => state.internships,
     }),
     getUserInternships() {
+      console.log('this internshops : ' , this.internships);
       const invitedIds = (this.invitations?.invitations || []).map(invitation => invitation.internship_id);
       return this.internships.filter(internship => !invitedIds.includes(internship.id));
     }
@@ -163,11 +167,11 @@ export default {
         { text: "Publication Date", value: "publication_date" },
       ],
       myHeaders: [
-        { text: "Internship Name", value: "name" },
+        { text: "Internship", value: "name" },
         { text: "Description", value: "description" },
         { text: "Company", value: "company" },
-        { text: "Start Date", value: "start_date" },
-        { text: "End Date", value: "end_date" },
+        { text: "Start", value: "start_date" },
+        { text: "End", value: "end_date" },
         { text: "Location", value: "location" },
         { text: "Duration", value: "duration" },
         { text: "Scholarship", value: "stipend" },
@@ -184,7 +188,8 @@ export default {
       };
 
           this.$store.dispatch('joinInternship', body).then(res=>{
-            this.snackbarMessage = res
+            console.log('res', res);
+            this.snackbarMessage = res.data.message
             this.snackbarColor = 'green';
             this.snackbar= true;
           })
