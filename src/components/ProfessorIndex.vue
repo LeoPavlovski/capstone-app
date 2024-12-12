@@ -22,14 +22,25 @@
 <!--                </v-expansion-panel-content>-->
 <!--              </v-expansion-panel>-->
 <!--            </v-expansion-panels>-->
-            <div v-for="item in news" :key="item.id">
               <v-card class="elevation-4 flex-column d-flex text-left pa-2 mb-2">
-                <span class="font-weight-medium" style="font-size:18px">Title: {{item.title}}</span>
-                <span style="font-size:16px">Publication Date: {{ new Date(item.publication_date).toLocaleDateString() }}</span>
-                <span style="font-size:16px">Author: {{item.author}}</span>
-                <span style="font-size:16px">Description: {{item.content}}</span>
+                <v-data-table :items="news" fixed-header :headers="newsHeaders" hide-default-footer>
+                  <template v-slot:item="{item}">
+                    <tr>
+                      <td>{{ new Date(item.publication_date).toLocaleDateString() }}</td>
+                      <td>{{item.title}}</td>
+                      <td>{{item.content}}</td>
+
+                      <td> <div class="d-flex align-center">
+                        <v-icon color="primary" class="mr-2">mdi-account</v-icon>{{item.author}}
+                      </div></td>
+                    </tr>
+                  </template>
+                </v-data-table>
+<!--                <span class="font-weight-medium" style="font-size:18px">Title: {{item.title}}</span>-->
+<!--                <span style="font-size:16px">Publication Date: {{ new Date(item.publication_date).toLocaleDateString() }}</span>-->
+<!--                <span style="font-size:16px">Author: {{item.author}}</span>-->
+<!--                <span style="font-size:16px">Description: {{item.content}}</span>-->
               </v-card>
-            </div>
           </v-card>
         </v-card>
       </v-col>
@@ -39,93 +50,165 @@
         <v-card class="px-0" color="primary">
           <v-card-title class="primary white--text"  color="primary">Companies</v-card-title>
           <v-card class="pa-5 overflow-auto" elevation="1" height="350" min-height="350">
-              <v-expansion-panels>
-                <v-expansion-panel
-                    v-for="company in companies"
-                    :key="company.id"
-                    class="mb-2 elevation-1"
+            <v-row>
+              <v-col
+                  v-for="company in companies"
+                  :key="company.id"
+                  cols="12"
+                  md="12"
+                  lg="12"
+                  class="mb-4"
+              >
+                <v-card
+                    class="elevation-2"
+                    outlined
+                    hover
                 >
-                  <v-expansion-panel-header class="px-0">
-                    <div class="d-flex align-center">
-                      <v-icon color="blue" class="mr-2 ml-2">mdi-linkedin</v-icon>
-                      <span class="text-capitalize"> {{ company.name }}</span>
-                    </div>
+                  <v-card-title class="primary white--text">
+                    <v-icon left>mdi-domain</v-icon>
+                    {{ company.name }}
+                  </v-card-title>
 
-                  </v-expansion-panel-header>
-                  <v-expansion-panel-content>
-                    <v-list style="max-height:300px; overflow:auto;">
-                      <v-list-item class="pa-0 ma-0">
-                        <v-list-item-icon>
-                          <v-icon color="green">mdi-account-multiple</v-icon>
-                        </v-list-item-icon>
-                        <v-list-item-content>Company Size : {{ company.companySize }}</v-list-item-content>
-                      </v-list-item>
-                      <v-list-item>
-                        <v-list-item-icon>
-                          <v-icon color="purple">mdi-web</v-icon>
-                        </v-list-item-icon>
-                        <v-list-item-content>Website :{{ company.companyWebsite }}</v-list-item-content>
-                      </v-list-item>
-                      <v-list-item>
-                        <v-list-item-icon>
-                          <v-icon color="orange">mdi-account-tie</v-icon>
-                        </v-list-item-icon>
-                        <v-list-item-content>Contact :{{ company.contactPersonName }}</v-list-item-content>
-                      </v-list-item>
-                      <v-list-item>
-                        <v-list-item-icon>
-                          <v-icon color="red">mdi-email</v-icon>
-                        </v-list-item-icon>
-                        <v-list-item-content>Contact Email :{{ company.contactPersonEmail }}</v-list-item-content>
-                      </v-list-item>
-                      <v-list-item>
-                        <v-list-item-icon>
-                          <v-icon color="green">mdi-phone</v-icon>
-                        </v-list-item-icon>
-                        <v-list-item-content> Contact phone :{{ company.contactPersonPhone }}</v-list-item-content>
-                      </v-list-item>
-                      <v-list-item>
-                        <v-list-item-icon>
-                          <v-icon color="brown">mdi-factory</v-icon>
-                        </v-list-item-icon>
-                        <v-list-item-content>Industry :{{ company.industry }}</v-list-item-content>
-                      </v-list-item>
-                      <v-list-item>
-                        <v-list-item-icon>
-                          <v-icon color="purple">mdi-map-marker</v-icon>
-                        </v-list-item-icon>
-                        <v-list-item-content>Address :{{ company.address }}</v-list-item-content>
-                      </v-list-item>
-                      <v-list-item>
-                        <v-list-item-icon>
-                          <v-icon color="blue">mdi-linkedin</v-icon>
-                        </v-list-item-icon>
-                        <v-list-item-content>Linkedin : {{ company.linkedin === null ? 'Not Registered' : company.linkedin }}</v-list-item-content>
-                      </v-list-item>
-                      <v-list-item>
-                        <v-list-item-icon>
-                          <v-icon color="light-blue">mdi-twitter</v-icon>
-                        </v-list-item-icon>
-                        <v-list-item-content>Twitter : {{ company.twitter === null ? 'Not Registered' : company.twitter }}</v-list-item-content>
-                      </v-list-item>
-                    </v-list>
-                  </v-expansion-panel-content>
-                </v-expansion-panel>
-              </v-expansion-panels>
+                  <v-card-text>
+                    <v-row class="text-left">
+                      <v-col cols="12">
+                        <strong>Company Size:</strong> {{ company.companySize }}
+                      </v-col>
+                      <v-col cols="12">
+                        <strong>Website:</strong>
+                        <a
+                            :href="company.companyWebsite"
+                            target="_blank"
+                            class="text-decoration-none text--primary"
+                        >
+                          {{ company.companyWebsite }}
+                        </a>
+                      </v-col>
+                      <v-col cols="12">
+                        <strong>Contact Person:</strong> {{ company.contactPersonName }}
+                      </v-col>
+                      <v-col cols="12">
+                        <strong>Email:</strong>
+                        <a
+                            :href="'mailto:' + company.contactPersonEmail"
+                            class="text-decoration-none text--primary"
+                        >
+                          {{ company.contactPersonEmail }}
+                        </a>
+                      </v-col>
+                      <v-col cols="12">
+                        <strong>Phone:</strong> {{ company.contactPersonPhone }}
+                      </v-col>
+                      <v-col cols="12">
+                        <strong>Industry:</strong> {{ company.industry }}
+                      </v-col>
+                      <v-col cols="12">
+                        <strong>Address:</strong> {{ company.address }}
+                      </v-col>
+                      <v-col cols="12">
+                        <strong>LinkedIn:</strong>
+                        <a
+                            :href="company.linkedin"
+                            target="_blank"
+                            class="text-decoration-none text--primary"
+                        >
+                          LinkedIn Profile
+                        </a>
+                      </v-col>
+                      <v-col cols="12">
+                        <strong>Twitter:</strong>
+                        <a
+                            :href="company.twitter"
+                            target="_blank"
+                            class="text-decoration-none text--primary"
+                        >
+                          Twitter Profile
+                        </a>
+                      </v-col>
+                    </v-row>
+                  </v-card-text>
+                </v-card>
+              </v-col>
+            </v-row>
+
+
+            <!--                  <v-expansion-panel-header class="px-0">-->
+<!--                    <div class="d-flex align-center">-->
+<!--                      <v-icon color="blue" class="mr-2 ml-2">mdi-linkedin</v-icon>-->
+<!--                      <span class="text-capitalize"> {{ company.name }}</span>-->
+<!--                    </div>-->
+
+<!--                  </v-expansion-panel-header>-->
+<!--                  <v-expansion-panel-content>-->
+<!--                    <v-list style="max-height:300px; overflow:auto;">-->
+<!--                      <v-list-item class="pa-0 ma-0">-->
+<!--                        <v-list-item-icon>-->
+<!--                          <v-icon color="green">mdi-account-multiple</v-icon>-->
+<!--                        </v-list-item-icon>-->
+<!--                        <v-list-item-content>Company Size : {{ company.companySize }}</v-list-item-content>-->
+<!--                      </v-list-item>-->
+<!--                      <v-list-item>-->
+<!--                        <v-list-item-icon>-->
+<!--                          <v-icon color="purple">mdi-web</v-icon>-->
+<!--                        </v-list-item-icon>-->
+<!--                        <v-list-item-content>Website :{{ company.companyWebsite }}</v-list-item-content>-->
+<!--                      </v-list-item>-->
+<!--                      <v-list-item>-->
+<!--                        <v-list-item-icon>-->
+<!--                          <v-icon color="orange">mdi-account-tie</v-icon>-->
+<!--                        </v-list-item-icon>-->
+<!--                        <v-list-item-content>Contact :{{ company.contactPersonName }}</v-list-item-content>-->
+<!--                      </v-list-item>-->
+<!--                      <v-list-item>-->
+<!--                        <v-list-item-icon>-->
+<!--                          <v-icon color="red">mdi-email</v-icon>-->
+<!--                        </v-list-item-icon>-->
+<!--                        <v-list-item-content>Contact Email :{{ company.contactPersonEmail }}</v-list-item-content>-->
+<!--                      </v-list-item>-->
+<!--                      <v-list-item>-->
+<!--                        <v-list-item-icon>-->
+<!--                          <v-icon color="green">mdi-phone</v-icon>-->
+<!--                        </v-list-item-icon>-->
+<!--                        <v-list-item-content> Contact phone :{{ company.contactPersonPhone }}</v-list-item-content>-->
+<!--                      </v-list-item>-->
+<!--                      <v-list-item>-->
+<!--                        <v-list-item-icon>-->
+<!--                          <v-icon color="brown">mdi-factory</v-icon>-->
+<!--                        </v-list-item-icon>-->
+<!--                        <v-list-item-content>Industry :{{ company.industry }}</v-list-item-content>-->
+<!--                      </v-list-item>-->
+<!--                      <v-list-item>-->
+<!--                        <v-list-item-icon>-->
+<!--                          <v-icon color="purple">mdi-map-marker</v-icon>-->
+<!--                        </v-list-item-icon>-->
+<!--                        <v-list-item-content>Address :{{ company.address }}</v-list-item-content>-->
+<!--                      </v-list-item>-->
+<!--                      <v-list-item>-->
+<!--                        <v-list-item-icon>-->
+<!--                          <v-icon color="blue">mdi-linkedin</v-icon>-->
+<!--                        </v-list-item-icon>-->
+<!--                        <v-list-item-content>Linkedin : {{ company.linkedin === null ? 'Not Registered' : company.linkedin }}</v-list-item-content>-->
+<!--                      </v-list-item>-->
+<!--                      <v-list-item>-->
+<!--                        <v-list-item-icon>-->
+<!--                          <v-icon color="light-blue">mdi-twitter</v-icon>-->
+<!--                        </v-list-item-icon>-->
+<!--                        <v-list-item-content>Twitter : {{ company.twitter === null ? 'Not Registered' : company.twitter }}</v-list-item-content>-->
+<!--                      </v-list-item>-->
+<!--                    </v-list>-->
+<!--                  </v-expansion-panel-content>-->
+<!--                </v-expansion-panel>-->
+<!--              </v-expansion-panels>-->
           </v-card>
           </v-card>
       </v-col>
       <v-col cols="12" md="12">
         <v-card class="px-0" color="primary">
-          <v-card-title class="white--text">Student's Joined Internships...</v-card-title>
-          <v-data-table :items="joinedStudents">
-          <template v-slot:item="{item}">
-            <tr class="text-left">
-              {{item.email}}
-            </tr>
-
-          </template>
-          </v-data-table>
+          <v-card-title class="white--text">
+            <v-icon small class="mr-2" color="green">mdi-circle</v-icon>
+            Accepted Internships
+          </v-card-title>
+          <v-data-table :height="300" :items="joinedStudents" :headers="headers"></v-data-table>
 <!--          <v-card class="pa-5 overflow-auto" elevation="1" height="270" min-height="270">-->
 <!--          <v-card-text >-->
 <!--              <v-row>-->
@@ -180,6 +263,7 @@ export default {
     await this.getCompanies();
     await this.getNews();
     await this.$store.dispatch('getJoinedStudents');
+    console.log('companies : ' , this.companies);
     },
   components: {
     Navigation,
@@ -206,6 +290,8 @@ export default {
   },
   data() {
     return {
+      newsHeaders:[{text:'Date' ,class:'primary white--text',}, {text:'Title', width:100 , class:'primary white--text',},  {text:'Description' ,class:'primary white--text',} , {text:'Author', class:'primary white--text'}],
+      headers:[{text:'Name', value:'name'}, {text:'Surname', value:'surname'},  {text:'Email' , value:'email'} , {text:'Department', value:'departmentName'}],
       courseData:[],
       courseForm: {
         name: '',
