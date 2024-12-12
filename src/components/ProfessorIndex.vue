@@ -65,7 +65,7 @@
                     hover
                 >
                   <v-card-title class="primary white--text">
-                    <v-icon left>mdi-domain</v-icon>
+                    <v-icon left color="white">mdi-domain</v-icon>
                     {{ company.name }}
                   </v-card-title>
 

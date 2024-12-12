@@ -191,7 +191,6 @@ export default {
         { text: "Duration", value: "duration" },
         { text: "Scholarship", value: "stipend" },
         { text: "Deadline", value: "deadline" },
-        { text: "Actions", value: "actions" }
       ],
       myHeaders: [
         { text: "Internship ", value: "name" },

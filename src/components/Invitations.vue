@@ -94,8 +94,7 @@
         <v-col cols="6" md="6">
           <v-card color="primary" elevation="3" width="100%">
             <v-card-title class="white--text">Apply For Internship</v-card-title>
-<!--
-           Sending the internship id , and the userId . -->
+<!--           Sending the internship id , and the userId . &ndash;&gt;-->
             <v-card class="px-2" :height="310">
               <v-col class="elevation-0">
                 <v-select
