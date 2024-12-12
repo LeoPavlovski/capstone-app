@@ -135,7 +135,6 @@ export default {
     await this.getUsers();
     await this.getNews();
     await this.getInternships();
-    console.log('Internships : ' , this.invitations);
   },
   components: {
     Navigation,
@@ -148,7 +147,6 @@ export default {
       internships: state => state.internships,
     }),
     getUserInternships() {
-      console.log('this internshops : ' , this.internships);
       const invitedIds = (this.invitations?.invitations || []).map(invitation => invitation.internship_id);
       return this.internships.filter(internship => !invitedIds.includes(internship.id));
     }
@@ -188,7 +186,6 @@ export default {
       };
 
           this.$store.dispatch('joinInternship', body).then(res=>{
-            console.log('res', res);
             this.snackbarMessage = res.data.message
             this.snackbarColor = 'green';
             this.snackbar= true;

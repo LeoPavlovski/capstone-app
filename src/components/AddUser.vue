@@ -108,7 +108,7 @@ export default{
         userCreatedBy:this.user.id,
         departmentName: department === 1 ? 'Computer Science' : 'Business Economics'
       }
-      console.log('body : ' , body);
+
       this.$store.dispatch('register', body).then(res => {
         this.userCreated=true;
         this.$store.dispatch('getUsers').then(res=>{

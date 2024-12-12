@@ -130,7 +130,6 @@ export default {
     this.getUsers();
     this.getInternships();
     this.getCompanies();
-    console.log('comp anies : ,', this.companies);
   },
   components: {
     Navigation,
@@ -144,14 +143,11 @@ export default {
     }),
     // Computed property to merge user data into internships
     enrichedInternships() {
-      console.log('Internships, ', this.internships);
-      console.log('Companies, ', this.companies);
 
       return this.internships.map(internship => {
         const user = this.users.find(user => user.id === internship.user_id);
         const company = this.companies.find(company => company.id === internship.company);
 
-        console.log('Company : ' , company);
 
         return {
           ...internship,

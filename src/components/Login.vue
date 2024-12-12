@@ -221,7 +221,6 @@ export default {
         this.snackbar = true;
       }).catch((error)=>{
         this.snackbarMessage = error;
-        console.log('message' , this.snackbarMessage);
         this.snackbarColor = 'error';
         this.snackbar = true;
       })

@@ -258,7 +258,6 @@ export default {
   methods: {
     getNews(){
       this.$store.dispatch('getNews').then(res=>{
-        console.log('NEWSSS :  ' , this.newsData);
       });
     },
     addNews(){

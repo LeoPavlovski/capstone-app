@@ -280,6 +280,8 @@ import { mapState } from "vuex";
 
 export default {
   mounted() {
+    var token = localStorage.getItem('authToken');
+    console.log('token : ' , token);
     //this.getUsers();
     this.getCompanies();
 
@@ -307,6 +309,7 @@ export default {
     //     };
     //   });
     // },
+
     filteredCompanies(){
       const filtered = this.companies.filter(company =>company.user_id  === this.user.id)
       return filtered;
@@ -323,12 +326,22 @@ export default {
           this.company.name
       );
     },
+    checkIfUserLogged(){
+      this.userLogged = true;
+      this.snackbarMessage = 'User Logged in ! '
+      this.snackbar = true;
+      this.userLogged = false;
+    },
     // getUserInternships() {
     //   return this.enrichedInternships.filter(item => item.user_id === this.user.id);
     // },
   },
   data() {
     return {
+      snackbar:true,
+      snackbarColor:'green',
+      snackbarMessage:'You have been logged in !',
+      userLogged:true,
       companyHeaders: [
         { text: 'Company', value: 'companyName' },
         { text: 'Size', value: 'companySize' },
@@ -417,8 +430,17 @@ export default {
     };
   },
   methods: {
+    getSuccessMessage() {
+      this.snackbarMessage = 'Success'; // Set the message
+      this.snackbarColor = 'green';    // Set the color
+      this.snackbar = true;            // Show the snackbar
+
+      // Optional: Automatically close the snackbar after 5 seconds
+      setTimeout(() => {
+        this.snackbar = false;
+      }, 5000);
+    },
     getCompanySize(item){
-      console.log('item', item);
       switch(item.companySize){
         case 1:
           return 'Small Company';
