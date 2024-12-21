@@ -90,7 +90,7 @@
           <template v-slot:item="{item}">
             <tr>
               <td>{{item.name}}</td>
-              <td>{{item.company}}</td>
+              <td>{{item.companyName}}</td>
 <!--              <td>-->
 <!--                <v-icon color="primary">mdi-calendar-today</v-icon>-->
 <!--                {{item.start_date}}-->
