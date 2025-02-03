@@ -151,11 +151,10 @@
                 <td>{{item.student.name}}</td>
                 <td>{{item.student.email}}</td>
                 <td>{{item.internship.name}}</td>
-                <td>{{item.internship.company}}</td>
                 <td>{{item.internship.start_date}}</td>
                 <td>{{item.internship.end_date}}</td>
                 <td>{{item.internship.deadline}}</td>
-                <td>{{item.internship.stipend}}</td>
+                <td>{{item.internship.stipend === 1 ? 'Yes' : 'No'}}</td>
                 <td>
                   <v-chip :color="item.status === 'accepted' ? 'green white--text' : 'red white--text'">
                     {{item.status}}
@@ -253,7 +252,6 @@ export default {
         {text: "Student Name", value: "student"},
         {text: "Student Email", value: "email"},
         {text: "Internship Name", value: "name"},
-        {text: "Company", value: "company"},
         {text: "Start Date", value: "start_date"},
         {text: "End Date", value: "end_date"},
         {text: "Deadline", value: "deadline"},

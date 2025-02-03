@@ -23,24 +23,6 @@ const routes = [
     component: Login
   },
   {
-    path: '/myprofile',
-    name: 'profile',
-    component: () => import(/* webpackChunkName: "profile" */ '../components/Profile.vue'),
-    meta: { requiresAuth: true }  // This route requires authentication
-  },
-  {
-    path: '/dashboard',
-    name: 'dashboard',
-    component: () => import(/* webpackChunkName: "dashboard" */ '../components/DashboardStudent.vue'),
-    meta: { requiresAuth: true }  // This route requires authentication
-  },
-  {
-    path: '/about',
-    name: 'about',
-    meta: { requiresAuth: true } , // This route requires authentication
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-  },
-  {
     path: '/companies',
     name: 'companies',
     meta: { requiresAuth: true } , // This route requires authentication

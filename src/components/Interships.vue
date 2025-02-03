@@ -46,19 +46,9 @@
               :loading="loading"
               loading-text="loading..."
           >
-
-
             <template v-slot:item.created="{item}">
               {{item.firstName}} {{item.lastName}}
             </template>
-<!--            <template v-slot:item.start_date="{item}">-->
-<!--              <v-icon color="primary">mdi-calendar-today</v-icon>-->
-<!--              {{item.start_date}}-->
-<!--            </template>-->
-<!--            <template v-slot:item.end_date="{item}">-->
-<!--              <v-icon color="red">mdi-calendar-clock</v-icon>-->
-<!--              {{item.end_date}}-->
-<!--            </template>-->
             <template v-slot:item.duration="{item}">
               <v-chip color="primary">
                 {{getDurationTime(item)}} Days

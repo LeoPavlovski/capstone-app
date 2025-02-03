@@ -516,16 +516,10 @@ export default {
     },
     submitEdit() {
       const body = {
-        id: this.editItem.id,
-        address: this.editItem.address,
-        companySize: this.editItem.companySize,
-        companyWebsite: this.editItem.companyWebsite,
-        contactPersonEmail: this.editItem.contactPersonEmail,
-        contactPersonName: this.editItem.contactPersonName,
-        contactPersonPhone: this.editItem.contactPersonPhone,
-        industry: this.editItem.industry,
-        linkedin: this.editItem.linkedin,
-        name: this.editItem.name,
+        id: this.editItem.id, address: this.editItem.address, companySize: this.editItem.companySize,
+        companyWebsite: this.editItem.companyWebsite, contactPersonEmail: this.editItem.contactPersonEmail,
+        contactPersonName: this.editItem.contactPersonName, contactPersonPhone: this.editItem.contactPersonPhone,
+        industry: this.editItem.industry, linkedin: this.editItem.linkedin, name: this.editItem.name,
         twitter: this.editItem.twitter,
       };
       this.$store.dispatch('editCompany', body).then(res => {

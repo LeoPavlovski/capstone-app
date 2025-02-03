@@ -2,7 +2,7 @@
   <div class="d-flex align-center  justify-center animated-background" style="height:100vh;">
     <v-card elevation="0">
       <v-col cols="12" sm="12">
-        <h3 class="text-center">Welcome to CST InternSync 📝</h3>
+        <h3 class="text-center">Welcome to InternSync 📝</h3>
         <v-card class="elevation-6 mt-3" height="500">
           <v-snackbar v-model="snackbar" :color="snackbarColor" timeout="3000">
             {{ snackbarMessage }}
@@ -172,9 +172,6 @@ import {mapGetters, mapState} from "vuex";
 
 export default {
   data: () => ({
-    // this.snackbarMessage = error.response.data.message;
-    // this.snackbarColor = 'error';
-    // this.snackbar = true;
     snackbarColor:'error',
     snackbar:false,
     snackbarMessage:'',
